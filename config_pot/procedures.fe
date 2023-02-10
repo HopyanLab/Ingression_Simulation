@@ -1,0 +1,517 @@
+// Toggle for cortical oscillations
+
+do_oscillations := 0;
+
+// Shape index parameters
+
+epi_p0_mean := 3.7;
+epi_r_mean := 1.0;
+epi_std := 0.06;
+
+mes_p0_mean := 3.6;
+mes_r_mean := 1.0;
+mes_std := 0.06;
+
+ing_p0_mean := 3.7;
+ing_r_mean := 1.0;
+ing_std := 0.06;
+
+// Segregation tension parameters
+
+start_ie_tension := 0.0;
+start_im_tension := 0.2;
+start_ai_tension := 0.3;
+end_ie_tension := 0.12;
+end_im_tension := 0.08;
+end_ai_tension := 0.6;
+
+apical_epi_tension := 0.3;
+apical_mes_tension := 1.0;
+apical_ing_tension := start_ai_tension;
+epi_epi_tension := 0.0;
+mes_mes_tension := 0.0;
+ing_ing_tension := 0.0;
+epi_mes_tension := 0.2;
+ing_epi_tension := start_ie_tension;
+ing_mes_tension := start_im_tension;
+
+nonlocal_counter := 1;
+
+PROCEDURE dump_system (integer save_number) {
+	// "./frame_%d.fe"
+	dump sprintf "./output/frame_%d.fe", save_number;
+	}
+
+PROCEDURE output_data (integer save_number) {
+	local output_file;
+	output_file := sprintf "./output/time_%d.txt", save_number;
+	printf "# energy\n" >>> output_file;
+	printf "%.9f\n", total_energy >> output_file;
+	printf "# vertices\n" >> output_file;
+	foreach vertex current_vertex do
+		printf "%d\t%.9f\t%.9f\n", current_vertex.id,
+					current_vertex.x, current_vertex.y >> output_file;
+	printf "\n# edges\n" >> output_file;
+	foreach edge current_edge do
+		printf "%d\t%d\t%d\n", current_edge.id,
+					current_edge.vertex[1].id,
+					current_edge.vertex[2].id >> output_file;
+	printf "\n# faces\n" >> output_file;
+	foreach face current_face do {
+		printf "%d", current_face.id >> output_file;
+		foreach current_face.edge current_edge do
+			printf "\t%d", current_edge.oid >> output_file;
+		printf "\t%d\n", current_face.type >> output_file;
+		}
+	}
+
+/*
+// Function to generate gaussian random variable. Uses Box-Muller Transform.
+FUNCTION real gaussian_random (real mean, real std) {
+	local uni_1;
+	uni_1 := random;
+	local uni_2;
+	uni_2 := random;
+	local gauss_1;
+	gauss_1 := sqrt(-2*log(uni_1))*sin(2*pi*uni_2);
+	return (mean + std*gauss_1);
+	} //*/
+
+// Function to generate gaussian random variable using central limit theorem.
+FUNCTION real gaussian_random (real mean, real std) {
+	local num_samples;
+	num_samples := 4;
+	local running_sum;
+	running_sum := 0.0;
+	local counter;
+	for (counter := 0; counter<num_samples; counter++)
+		running_sum += (random - 0.5);
+	local gauss;
+	gauss := 2*running_sum*sqrt(3/num_samples);
+	return (mean + std*gauss);
+	}
+
+// Procedures for ingression vertex model.
+PROCEDURE setup_ingression () {
+	local picked_one;
+	picked_one := 0;
+	foreach facet current_face do {
+		if current_face.type == 2 && picked_one == 0 then {
+			local is_inside;
+			is_inside := 1;
+			foreach current_face.edge current_edge do {
+				if current_edge.face[1].type == 1 || 
+				   current_edge.face[2].type == 1 || 
+				   current_edge.face[1].type == 0 || 
+				   current_edge.face[2].type == 0 then
+					is_inside := 0;
+				};
+			if is_inside == 1 then {
+				local centroid;
+				define centroid real [2];
+				centroid[1] := 0;
+				centroid[2] := 0;
+				local vertex_counter;
+				vertex_counter := 0;
+				foreach current_face.vertex current_vertex do {
+					centroid[1] := centroid[1] + current_vertex.x;
+					centroid[2] := centroid[2] + current_vertex.y;
+					vertex_counter := vertex_counter + 1;
+					};
+				centroid[1] := centroid[1] / vertex_counter;
+				centroid[2] := centroid[2] / vertex_counter;
+				if (centroid[1] > Nx/2 - 0.6) &&
+				   (centroid[1] < Nx/2 + 0.6) then {
+					current_face.type := 3;
+					picked_one := 1;
+					};
+				};
+			};
+		};
+	}
+
+PROCEDURE setup_types (real height) {
+	foreach facet current_face do {
+		if current_face.id <= 3 then {
+			set current_face.type -1; // Empty space
+			continue;
+			};
+		if current_face.id == 4 then {
+			set current_face.type 0; // Empty space
+			continue;
+			};
+		local centroid;
+		define centroid real [2];
+		centroid[1] := 0;
+		centroid[2] := 0;
+		local vertex_counter;
+		vertex_counter := 0;
+		foreach current_face.vertex current_vertex do {
+			centroid[1] := centroid[1] + current_vertex.x;
+			centroid[2] := centroid[2] + current_vertex.y;
+			vertex_counter := vertex_counter + 1;
+			};
+		centroid[1] := centroid[1] / vertex_counter;
+		centroid[2] := centroid[2] / vertex_counter;
+		if (centroid[2] > Ny - height) then {
+			set current_face.type 2;
+			exec sprintf "cell_%d_p0 := %1.3f", current_face.id, epi_p0_mean;
+			}
+		else {
+			set current_face.type 1;
+			exec sprintf "cell_%d_p0 := %1.3f", current_face.id, mes_p0_mean;
+			};
+		};
+	}
+
+PROCEDURE set_colors () {
+	foreach edge current_edge do
+		set current_edge.color black;
+	foreach facet current_face do
+		if current_face.type == -1 then
+			set current_face.edges.color lightblue;
+	foreach facet current_face do
+		if current_face.type == 0 then
+			set current_face.edges.color green;
+	foreach facet current_face do
+		if current_face.type == 1 then
+			set current_face.edges.color black;
+	foreach facet current_face do
+		if current_face.type == 2 then
+			set current_face.edges.color red;
+	foreach facet current_face do
+		if current_face.type == 3 then
+			set current_face.edges.color blue;
+	return;
+	}
+
+PROCEDURE set_tension () {
+	foreach edge current_edge do
+		set current_edge.tension 0;
+	foreach edge current_edge do {
+		if current_edge.valence == 1 then
+			continue // Don't worry about edges on boundary.
+		else if (current_edge.facets[1].type == 2 and \
+					current_edge.facets[2].type == 2) or \
+				(current_edge.facets[1].type == 2 and \
+					current_edge.facets[2].type == 2) then
+			set current_edge.tension epi_epi_tension
+		else if (current_edge.facets[1].type == 1 and \
+					current_edge.facets[2].type == 1) or \
+				(current_edge.facets[1].type == 1 and \
+					current_edge.facets[2].type == 1) then
+			set current_edge.tension mes_mes_tension
+		else if (current_edge.facets[1].type == 3 and \
+					current_edge.facets[2].type == 3) or \
+				(current_edge.facets[1].type == 3 and \
+					current_edge.facets[2].type == 3) then
+			set current_edge.tension ing_ing_tension
+		else if (current_edge.facets[1].type == 0 and \
+					current_edge.facets[2].type == 1) or \
+				(current_edge.facets[1].type == 1 and \
+					current_edge.facets[2].type == 0) then
+			set current_edge.tension apical_mes_tension
+		else if (current_edge.facets[1].type == 0 and \
+					current_edge.facets[2].type == 2) or \
+				(current_edge.facets[1].type == 2 and \
+					current_edge.facets[2].type == 0) then
+			set current_edge.tension apical_epi_tension
+		else if (current_edge.facets[1].type == 0 and \
+					current_edge.facets[2].type == 3) or \
+				(current_edge.facets[1].type == 3 and \
+					current_edge.facets[2].type == 0) then
+			set current_edge.tension apical_ing_tension
+		else if (current_edge.facets[1].type == 1 and \
+					current_edge.facets[2].type == 2) or \
+				(current_edge.facets[1].type == 2 and \
+					current_edge.facets[2].type == 1) then
+			set current_edge.tension epi_mes_tension
+		else if (current_edge.facets[1].type == 1 and \
+					current_edge.facets[2].type == 3) or \
+				(current_edge.facets[1].type == 3 and \
+					current_edge.facets[2].type == 1) then
+			set current_edge.tension ing_mes_tension
+		else if (current_edge.facets[1].type == 2 and \
+					current_edge.facets[2].type == 3) or \
+				(current_edge.facets[1].type == 3 and \
+					current_edge.facets[2].type == 2) then
+			set current_edge.tension ing_epi_tension;
+		};
+	return;
+	}
+
+PROCEDURE print_area (integer face_number) {
+	exec sprintf "print cell_%d_area_pos.value - cell_%d_area_neg.value",
+										face_number, face_number;
+	}
+
+PROCEDURE unset_edge_methods (integer edge_number) {
+	foreach edge[edge_number].face current_face do {
+		exec sprintf "unset edge[%d] cell_%d_peri",
+							edge_number, current_face.id;
+		exec sprintf "unset edge[%d] cell_%d_area_pos",
+							edge_number, current_face.id;
+		exec sprintf "unset edge[%d] cell_%d_area_neg",
+							edge_number, current_face.id;
+		};
+	}
+
+PROCEDURE set_edge_methods (integer edge_number) {
+	foreach edge[edge_number].face current_face do {
+		exec sprintf "set edge[%d] cell_%d_peri",
+								edge_number, current_face.id;
+		local face_index;
+		if edge[edge_number].face[1].id == current_face.id then
+			face_index := 1 else face_index := 2;
+		if (edge[edge_number].face[face_index].oid > 0) then {
+			exec sprintf "set edge[%d] cell_%d_area_pos",
+								edge_number, current_face.id;
+			}
+		else {
+			exec sprintf "set edge[%d] cell_%d_area_neg",
+								edge_number, current_face.id;
+			}
+		};
+	}
+
+PROCEDURE t1_exchange (integer edge_number) {
+	// v_constraint_list is structured as
+	//  {#_constraints some_constraint some_other_constraint ...}
+	foreach edge[edge_number].vertex current_vertex do {
+		local const_index;
+		for (const_index := v_constraint_list[1]+1; const_index >= 2;
+					const_index--) {
+			local const_number;
+			const_number := current_vertex.v_constraint_list[const_index]
+																imod 0x100000;
+			unset current_vertex constraint const_number;
+			};
+		};
+	unset_edge_methods(edge_number);
+	t1_edgeswap edge[edge_number];
+	set_edge_methods(edge_number);
+	foreach edge[edge_number].vertex current_vertex do
+		foreach current_vertex.face current_face do
+			if current_face.type == -1 then
+				set current_vertex constraint current_face.id;
+	set_colors();
+	set_tension();
+	return;
+	}
+
+// Relax the system allowing passive T1 transitions when edges become short.
+PROCEDURE relax_system (integer maximum_steps) {
+	local step_counter;
+	for (step_counter:=1; step_counter<=maximum_steps; step_counter++) {
+		local initial_energy;
+		initial_energy := total_energy;
+		g1;
+		if min(edges, length) < length_threshold then {
+			local edge_counter;
+			for (edge_counter := 1; edge_counter <= edge_count;
+									edge_counter++) {
+				if edge[edge_counter].length < length_threshold /*and \
+						edge[edge_counter].length < edge_lengths[edge_counter]*/
+						then {
+					t1_exchange(edge_counter);
+					// Push the vertices appart slightly.
+					// This improves the behaviour somewhat in a liquid phase.
+					set edge[edge_counter].tension -0.1;
+					g1;
+					set edge[edge_counter].tension 0;
+					//
+					printf "relaxer fliped edge %d\n", edge_counter;
+					};
+				};
+			set scale 1; // Reset scale after topological change.
+			};
+		g1;
+		if step_counter > 10 and \
+				total_energy <= initial_energy and \
+				initial_energy - total_energy < energy_threshold then
+			return;
+		};
+	return;
+	}
+
+PROCEDURE run_system (integer maximum_steps) {
+	local step_counter;
+	for (step_counter:=1; step_counter<=maximum_steps; step_counter++) {
+		if do_oscillations == 1 then
+			foreach face current_face do {
+				local new_p0;
+				new_p0 := 0.0;
+				local new_r;
+				new_r := 0.0;
+				local new_rand;
+				new_rand := 0.0;
+				if current_face.type == 1 then {
+					new_rand := gaussian_random(1.0, mes_std);
+				//	new_p0 := mes_p0_mean * new_rand;
+				//	new_r := mes_r_mean;
+					new_p0 := mes_p0_mean / new_rand;
+					new_r := mes_r_mean / new_rand;
+					}
+				else if current_face.type == 2 then {
+					new_rand := gaussian_random(1.0, epi_std);
+				//	new_p0 := epi_p0_mean * new_rand;
+				//	new_r := epi_r_mean;
+					new_p0 := epi_p0_mean / new_rand;
+					new_r := epi_r_mean / new_rand;
+					}
+				else if current_face.type == 3 then {
+					new_rand := gaussian_random(1.0, ing_std);
+				//	new_p0 := ing_p0_mean * new_rand;
+				//	new_r := ing_r_mean;
+					new_p0 := ing_p0_mean / new_rand;
+					new_r := ing_r_mean / new_rand;
+					};
+				exec sprintf "cell_%d_p0 := %1.4f",
+								current_face.id, new_p0;
+				exec sprintf "cell_%d_r := %1.4f",
+								current_face.id, new_r;
+				};
+		if force_coefficent > 0 then {
+			foreach vertex current_vertex do {
+				local is_ing;
+				is_ing := 0;
+				foreach current_vertex.facets current_face do{
+					if current_face.type == 3 then {
+						is_ing := 1;
+						};
+					};
+				if is_ing == 1 then {
+					set current_vertex downward_force;
+					} else {
+					unset current_vertex downward_force;
+					};
+				};
+			};
+		relax_system(10);
+		local divisor;
+		divisor := 10;
+		if (step_counter imod divisor == 0) then {
+			output_data(nonlocal_counter);
+			nonlocal_counter += 1;
+			};
+		};
+	return;
+	}
+
+PROCEDURE track_t1 (integer edge_number) {
+	local number_iterations; // How much to relax between each step.
+	number_iterations := 240;
+	local number_steps; // How many steps to divide the motion into.
+	number_steps := 6;
+	local number_substeps;
+	number_substeps := 3;
+	local initial_length;
+	initial_length := edge[edge_number].length;
+	local initial_energy;
+	initial_energy := total_energy;
+	set edge[edge_number] fixed_edge;
+	set fixed_edge target initial_length;
+	fix fixed_edge;
+	local step_number;
+	for(step_number := 1; step_number <= number_steps; step_number++) {
+		local fixed_length;
+		local substep_number;
+		for (substep_number := 0; substep_number < number_substeps;
+						substep_number++) {
+			fixed_length := maximum( length_tolerance,
+						initial_length * (1 - step_number/number_steps) +
+							initial_length/number_steps *
+								(1 - substep_number/number_substeps) );
+			set fixed_edge target fixed_length;
+			g1;
+			};
+		fixed_length := maximum( length_tolerance,
+						initial_length * (1 - step_number/number_steps) );
+		set fixed_edge target fixed_length;
+		local current_energy;
+		local iteration;
+		g1;
+		for (iteration := 0; iteration < number_iterations; iteration++) {
+			current_energy := total_energy;
+			g1;
+			if abs(total_energy - current_energy) <= energy_threshold then
+				break;
+			};
+		if total_energy < initial_energy then initial_energy := total_energy;
+		run_system(10);
+		};
+	local peak_energy;
+	peak_energy := total_energy;
+	if initial_energy < peak_energy then {
+		t1_exchange(edge_number);
+		local fixed_length;
+		fixed_length := maximum( length_tolerance,
+						initial_length/(number_steps*number_substeps) );
+		set fixed_edge target fixed_length;
+		local current_energy;
+		local iteration;
+		g1;
+		for (iteration := 0; iteration < number_iterations; iteration++) {
+			current_energy := total_energy;
+			g1;
+			if abs(total_energy - current_energy) <= energy_threshold then
+				break;
+			};
+		};
+	for(step_number := 1; step_number <= number_steps; step_number++) {
+		local fixed_length;
+		local substep_number;
+		for (substep_number := 0; substep_number < number_substeps;
+						substep_number++) {
+			fixed_length := maximum( length_tolerance,
+						initial_length * (step_number/number_steps) +
+							initial_length/number_steps *
+								(substep_number/number_substeps) );
+			set fixed_edge target fixed_length;
+			g1;
+			};
+		fixed_length := maximum( length_tolerance,
+						initial_length * (step_number/number_steps) );
+		set fixed_edge target fixed_length;
+		local current_energy;
+		local iteration;
+		g1;
+		for (iteration := 0; iteration < number_iterations; iteration++) {
+			current_energy := total_energy;
+			g1;
+			if abs(total_energy - current_energy) <= energy_threshold then
+				break;
+			};
+		if total_energy < initial_energy then initial_energy := total_energy;
+		run_system(10);
+		};
+	unfix fixed_edge;
+	unset edge[edge_number] fixed_edge;
+	return;
+	}
+
+change_steps := 1;
+change_increments := 1;
+number_steps := 500;
+
+change := { local change_counter;
+			for ( change_counter := 1;
+				  change_counter <= change_increments;
+				  change_counter++ ) {
+				run_system(change_steps);
+				local fraction;
+				fraction := change_counter/change_increments;
+				ing_epi_tension := (1.0-fraction) * start_ie_tension +
+								   fraction * end_ie_tension;
+				ing_mes_tension := (1.0-fraction) * start_im_tension +
+								   fraction * end_im_tension;
+				apical_ing_tension := (1.0-fraction) * start_ai_tension +
+									  fraction * end_ai_tension;
+				};
+			}
+setup := { setup_types(3.2); set_colors(); set_tension(); }
+relax := { relax_system(100); output_data(0); } // dump_system(0); }
+reset := { setup_ingression(); set_colors(); set_tension(); }
+giver := { setup; relax; reset;
+		   relax; change; relax;
+		   run_system(number_steps); }

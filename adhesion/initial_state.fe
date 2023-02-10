@@ -1,0 +1,2689 @@
+// Bounded Voronoi Tesselation
+
+STRING
+SURFACE_DIMENSION 1
+SPACE_DIMENSION   2
+DEFINE facet ATTRIBUTE type integer
+
+PARAMETER Nx = 16
+PARAMETER Ny = 8
+PARAMETER length_threshold = 0.050000000
+PARAMETER energy_threshold = 0.000000010
+
+PARAMETER force_coefficent = 0.000000000
+
+CONSTRAINT 1
+	formula: x = 0
+
+CONSTRAINT 2
+	formula: y = 0
+
+CONSTRAINT 3
+	formula: x = 16
+
+CONSTRAINT 4
+	formula: y = 16
+
+QUANTITY fixed_edge INFO_ONLY METHOD edge_length
+
+QUANTITY downward_force ENERGY METHOD vertex_scalar_integral
+	scalar_integrand: force_coefficent * y
+
+METHOD_INSTANCE cell_1_peri METHOD edge_length
+METHOD_INSTANCE cell_1_area_pos METHOD edge_area
+METHOD_INSTANCE cell_1_area_neg METHOD edge_area
+PARAMETER cell_1_p0 = 3.600000000
+PARAMETER cell_1_r = 1.000000000
+QUANTITY cell_1_energy ENERGY FUNCTION
+	0
+
+
+METHOD_INSTANCE cell_2_peri METHOD edge_length
+METHOD_INSTANCE cell_2_area_pos METHOD edge_area
+METHOD_INSTANCE cell_2_area_neg METHOD edge_area
+PARAMETER cell_2_p0 = 3.600000000
+PARAMETER cell_2_r = 1.000000000
+QUANTITY cell_2_energy ENERGY FUNCTION
+	0
+
+
+METHOD_INSTANCE cell_3_peri METHOD edge_length
+METHOD_INSTANCE cell_3_area_pos METHOD edge_area
+METHOD_INSTANCE cell_3_area_neg METHOD edge_area
+PARAMETER cell_3_p0 = 3.600000000
+PARAMETER cell_3_r = 1.000000000
+QUANTITY cell_3_energy ENERGY FUNCTION
+	0
+
+
+METHOD_INSTANCE cell_4_peri METHOD edge_length
+METHOD_INSTANCE cell_4_area_pos METHOD edge_area
+METHOD_INSTANCE cell_4_area_neg METHOD edge_area
+PARAMETER cell_4_p0 = 3.600000000
+PARAMETER cell_4_r = 1.000000000
+QUANTITY cell_4_energy ENERGY FUNCTION
+	0
+
+
+METHOD_INSTANCE cell_5_peri METHOD edge_length
+METHOD_INSTANCE cell_5_area_pos METHOD edge_area
+METHOD_INSTANCE cell_5_area_neg METHOD edge_area
+PARAMETER cell_5_p0 = 3.600000000
+PARAMETER cell_5_r = 1.000000000
+QUANTITY cell_5_energy ENERGY FUNCTION
+	(cell_5_area_pos.value - cell_5_area_neg.value - 1)^2 +
+	(cell_5_peri.value - cell_5_p0)^2/cell_5_r
+
+
+METHOD_INSTANCE cell_6_peri METHOD edge_length
+METHOD_INSTANCE cell_6_area_pos METHOD edge_area
+METHOD_INSTANCE cell_6_area_neg METHOD edge_area
+PARAMETER cell_6_p0 = 3.600000000
+PARAMETER cell_6_r = 1.000000000
+QUANTITY cell_6_energy ENERGY FUNCTION
+	(cell_6_area_pos.value - cell_6_area_neg.value - 1)^2 +
+	(cell_6_peri.value - cell_6_p0)^2/cell_6_r
+
+
+METHOD_INSTANCE cell_7_peri METHOD edge_length
+METHOD_INSTANCE cell_7_area_pos METHOD edge_area
+METHOD_INSTANCE cell_7_area_neg METHOD edge_area
+PARAMETER cell_7_p0 = 3.600000000
+PARAMETER cell_7_r = 1.000000000
+QUANTITY cell_7_energy ENERGY FUNCTION
+	(cell_7_area_pos.value - cell_7_area_neg.value - 1)^2 +
+	(cell_7_peri.value - cell_7_p0)^2/cell_7_r
+
+
+METHOD_INSTANCE cell_8_peri METHOD edge_length
+METHOD_INSTANCE cell_8_area_pos METHOD edge_area
+METHOD_INSTANCE cell_8_area_neg METHOD edge_area
+PARAMETER cell_8_p0 = 3.600000000
+PARAMETER cell_8_r = 1.000000000
+QUANTITY cell_8_energy ENERGY FUNCTION
+	(cell_8_area_pos.value - cell_8_area_neg.value - 1)^2 +
+	(cell_8_peri.value - cell_8_p0)^2/cell_8_r
+
+
+METHOD_INSTANCE cell_9_peri METHOD edge_length
+METHOD_INSTANCE cell_9_area_pos METHOD edge_area
+METHOD_INSTANCE cell_9_area_neg METHOD edge_area
+PARAMETER cell_9_p0 = 3.600000000
+PARAMETER cell_9_r = 1.000000000
+QUANTITY cell_9_energy ENERGY FUNCTION
+	(cell_9_area_pos.value - cell_9_area_neg.value - 1)^2 +
+	(cell_9_peri.value - cell_9_p0)^2/cell_9_r
+
+
+METHOD_INSTANCE cell_10_peri METHOD edge_length
+METHOD_INSTANCE cell_10_area_pos METHOD edge_area
+METHOD_INSTANCE cell_10_area_neg METHOD edge_area
+PARAMETER cell_10_p0 = 3.600000000
+PARAMETER cell_10_r = 1.000000000
+QUANTITY cell_10_energy ENERGY FUNCTION
+	(cell_10_area_pos.value - cell_10_area_neg.value - 1)^2 +
+	(cell_10_peri.value - cell_10_p0)^2/cell_10_r
+
+
+METHOD_INSTANCE cell_11_peri METHOD edge_length
+METHOD_INSTANCE cell_11_area_pos METHOD edge_area
+METHOD_INSTANCE cell_11_area_neg METHOD edge_area
+PARAMETER cell_11_p0 = 3.600000000
+PARAMETER cell_11_r = 1.000000000
+QUANTITY cell_11_energy ENERGY FUNCTION
+	(cell_11_area_pos.value - cell_11_area_neg.value - 1)^2 +
+	(cell_11_peri.value - cell_11_p0)^2/cell_11_r
+
+
+METHOD_INSTANCE cell_12_peri METHOD edge_length
+METHOD_INSTANCE cell_12_area_pos METHOD edge_area
+METHOD_INSTANCE cell_12_area_neg METHOD edge_area
+PARAMETER cell_12_p0 = 3.600000000
+PARAMETER cell_12_r = 1.000000000
+QUANTITY cell_12_energy ENERGY FUNCTION
+	(cell_12_area_pos.value - cell_12_area_neg.value - 1)^2 +
+	(cell_12_peri.value - cell_12_p0)^2/cell_12_r
+
+
+METHOD_INSTANCE cell_13_peri METHOD edge_length
+METHOD_INSTANCE cell_13_area_pos METHOD edge_area
+METHOD_INSTANCE cell_13_area_neg METHOD edge_area
+PARAMETER cell_13_p0 = 3.600000000
+PARAMETER cell_13_r = 1.000000000
+QUANTITY cell_13_energy ENERGY FUNCTION
+	(cell_13_area_pos.value - cell_13_area_neg.value - 1)^2 +
+	(cell_13_peri.value - cell_13_p0)^2/cell_13_r
+
+
+METHOD_INSTANCE cell_14_peri METHOD edge_length
+METHOD_INSTANCE cell_14_area_pos METHOD edge_area
+METHOD_INSTANCE cell_14_area_neg METHOD edge_area
+PARAMETER cell_14_p0 = 3.600000000
+PARAMETER cell_14_r = 1.000000000
+QUANTITY cell_14_energy ENERGY FUNCTION
+	(cell_14_area_pos.value - cell_14_area_neg.value - 1)^2 +
+	(cell_14_peri.value - cell_14_p0)^2/cell_14_r
+
+
+METHOD_INSTANCE cell_15_peri METHOD edge_length
+METHOD_INSTANCE cell_15_area_pos METHOD edge_area
+METHOD_INSTANCE cell_15_area_neg METHOD edge_area
+PARAMETER cell_15_p0 = 3.600000000
+PARAMETER cell_15_r = 1.000000000
+QUANTITY cell_15_energy ENERGY FUNCTION
+	(cell_15_area_pos.value - cell_15_area_neg.value - 1)^2 +
+	(cell_15_peri.value - cell_15_p0)^2/cell_15_r
+
+
+METHOD_INSTANCE cell_16_peri METHOD edge_length
+METHOD_INSTANCE cell_16_area_pos METHOD edge_area
+METHOD_INSTANCE cell_16_area_neg METHOD edge_area
+PARAMETER cell_16_p0 = 3.600000000
+PARAMETER cell_16_r = 1.000000000
+QUANTITY cell_16_energy ENERGY FUNCTION
+	(cell_16_area_pos.value - cell_16_area_neg.value - 1)^2 +
+	(cell_16_peri.value - cell_16_p0)^2/cell_16_r
+
+
+METHOD_INSTANCE cell_17_peri METHOD edge_length
+METHOD_INSTANCE cell_17_area_pos METHOD edge_area
+METHOD_INSTANCE cell_17_area_neg METHOD edge_area
+PARAMETER cell_17_p0 = 3.600000000
+PARAMETER cell_17_r = 1.000000000
+QUANTITY cell_17_energy ENERGY FUNCTION
+	(cell_17_area_pos.value - cell_17_area_neg.value - 1)^2 +
+	(cell_17_peri.value - cell_17_p0)^2/cell_17_r
+
+
+METHOD_INSTANCE cell_18_peri METHOD edge_length
+METHOD_INSTANCE cell_18_area_pos METHOD edge_area
+METHOD_INSTANCE cell_18_area_neg METHOD edge_area
+PARAMETER cell_18_p0 = 3.600000000
+PARAMETER cell_18_r = 1.000000000
+QUANTITY cell_18_energy ENERGY FUNCTION
+	(cell_18_area_pos.value - cell_18_area_neg.value - 1)^2 +
+	(cell_18_peri.value - cell_18_p0)^2/cell_18_r
+
+
+METHOD_INSTANCE cell_19_peri METHOD edge_length
+METHOD_INSTANCE cell_19_area_pos METHOD edge_area
+METHOD_INSTANCE cell_19_area_neg METHOD edge_area
+PARAMETER cell_19_p0 = 3.600000000
+PARAMETER cell_19_r = 1.000000000
+QUANTITY cell_19_energy ENERGY FUNCTION
+	(cell_19_area_pos.value - cell_19_area_neg.value - 1)^2 +
+	(cell_19_peri.value - cell_19_p0)^2/cell_19_r
+
+
+METHOD_INSTANCE cell_20_peri METHOD edge_length
+METHOD_INSTANCE cell_20_area_pos METHOD edge_area
+METHOD_INSTANCE cell_20_area_neg METHOD edge_area
+PARAMETER cell_20_p0 = 3.600000000
+PARAMETER cell_20_r = 1.000000000
+QUANTITY cell_20_energy ENERGY FUNCTION
+	(cell_20_area_pos.value - cell_20_area_neg.value - 1)^2 +
+	(cell_20_peri.value - cell_20_p0)^2/cell_20_r
+
+
+METHOD_INSTANCE cell_21_peri METHOD edge_length
+METHOD_INSTANCE cell_21_area_pos METHOD edge_area
+METHOD_INSTANCE cell_21_area_neg METHOD edge_area
+PARAMETER cell_21_p0 = 3.600000000
+PARAMETER cell_21_r = 1.000000000
+QUANTITY cell_21_energy ENERGY FUNCTION
+	(cell_21_area_pos.value - cell_21_area_neg.value - 1)^2 +
+	(cell_21_peri.value - cell_21_p0)^2/cell_21_r
+
+
+METHOD_INSTANCE cell_22_peri METHOD edge_length
+METHOD_INSTANCE cell_22_area_pos METHOD edge_area
+METHOD_INSTANCE cell_22_area_neg METHOD edge_area
+PARAMETER cell_22_p0 = 3.600000000
+PARAMETER cell_22_r = 1.000000000
+QUANTITY cell_22_energy ENERGY FUNCTION
+	(cell_22_area_pos.value - cell_22_area_neg.value - 1)^2 +
+	(cell_22_peri.value - cell_22_p0)^2/cell_22_r
+
+
+METHOD_INSTANCE cell_23_peri METHOD edge_length
+METHOD_INSTANCE cell_23_area_pos METHOD edge_area
+METHOD_INSTANCE cell_23_area_neg METHOD edge_area
+PARAMETER cell_23_p0 = 3.600000000
+PARAMETER cell_23_r = 1.000000000
+QUANTITY cell_23_energy ENERGY FUNCTION
+	(cell_23_area_pos.value - cell_23_area_neg.value - 1)^2 +
+	(cell_23_peri.value - cell_23_p0)^2/cell_23_r
+
+
+METHOD_INSTANCE cell_24_peri METHOD edge_length
+METHOD_INSTANCE cell_24_area_pos METHOD edge_area
+METHOD_INSTANCE cell_24_area_neg METHOD edge_area
+PARAMETER cell_24_p0 = 3.600000000
+PARAMETER cell_24_r = 1.000000000
+QUANTITY cell_24_energy ENERGY FUNCTION
+	(cell_24_area_pos.value - cell_24_area_neg.value - 1)^2 +
+	(cell_24_peri.value - cell_24_p0)^2/cell_24_r
+
+
+METHOD_INSTANCE cell_25_peri METHOD edge_length
+METHOD_INSTANCE cell_25_area_pos METHOD edge_area
+METHOD_INSTANCE cell_25_area_neg METHOD edge_area
+PARAMETER cell_25_p0 = 3.600000000
+PARAMETER cell_25_r = 1.000000000
+QUANTITY cell_25_energy ENERGY FUNCTION
+	(cell_25_area_pos.value - cell_25_area_neg.value - 1)^2 +
+	(cell_25_peri.value - cell_25_p0)^2/cell_25_r
+
+
+METHOD_INSTANCE cell_26_peri METHOD edge_length
+METHOD_INSTANCE cell_26_area_pos METHOD edge_area
+METHOD_INSTANCE cell_26_area_neg METHOD edge_area
+PARAMETER cell_26_p0 = 3.600000000
+PARAMETER cell_26_r = 1.000000000
+QUANTITY cell_26_energy ENERGY FUNCTION
+	(cell_26_area_pos.value - cell_26_area_neg.value - 1)^2 +
+	(cell_26_peri.value - cell_26_p0)^2/cell_26_r
+
+
+METHOD_INSTANCE cell_27_peri METHOD edge_length
+METHOD_INSTANCE cell_27_area_pos METHOD edge_area
+METHOD_INSTANCE cell_27_area_neg METHOD edge_area
+PARAMETER cell_27_p0 = 3.600000000
+PARAMETER cell_27_r = 1.000000000
+QUANTITY cell_27_energy ENERGY FUNCTION
+	(cell_27_area_pos.value - cell_27_area_neg.value - 1)^2 +
+	(cell_27_peri.value - cell_27_p0)^2/cell_27_r
+
+
+METHOD_INSTANCE cell_28_peri METHOD edge_length
+METHOD_INSTANCE cell_28_area_pos METHOD edge_area
+METHOD_INSTANCE cell_28_area_neg METHOD edge_area
+PARAMETER cell_28_p0 = 3.600000000
+PARAMETER cell_28_r = 1.000000000
+QUANTITY cell_28_energy ENERGY FUNCTION
+	(cell_28_area_pos.value - cell_28_area_neg.value - 1)^2 +
+	(cell_28_peri.value - cell_28_p0)^2/cell_28_r
+
+
+METHOD_INSTANCE cell_29_peri METHOD edge_length
+METHOD_INSTANCE cell_29_area_pos METHOD edge_area
+METHOD_INSTANCE cell_29_area_neg METHOD edge_area
+PARAMETER cell_29_p0 = 3.600000000
+PARAMETER cell_29_r = 1.000000000
+QUANTITY cell_29_energy ENERGY FUNCTION
+	(cell_29_area_pos.value - cell_29_area_neg.value - 1)^2 +
+	(cell_29_peri.value - cell_29_p0)^2/cell_29_r
+
+
+METHOD_INSTANCE cell_30_peri METHOD edge_length
+METHOD_INSTANCE cell_30_area_pos METHOD edge_area
+METHOD_INSTANCE cell_30_area_neg METHOD edge_area
+PARAMETER cell_30_p0 = 3.600000000
+PARAMETER cell_30_r = 1.000000000
+QUANTITY cell_30_energy ENERGY FUNCTION
+	(cell_30_area_pos.value - cell_30_area_neg.value - 1)^2 +
+	(cell_30_peri.value - cell_30_p0)^2/cell_30_r
+
+
+METHOD_INSTANCE cell_31_peri METHOD edge_length
+METHOD_INSTANCE cell_31_area_pos METHOD edge_area
+METHOD_INSTANCE cell_31_area_neg METHOD edge_area
+PARAMETER cell_31_p0 = 3.600000000
+PARAMETER cell_31_r = 1.000000000
+QUANTITY cell_31_energy ENERGY FUNCTION
+	(cell_31_area_pos.value - cell_31_area_neg.value - 1)^2 +
+	(cell_31_peri.value - cell_31_p0)^2/cell_31_r
+
+
+METHOD_INSTANCE cell_32_peri METHOD edge_length
+METHOD_INSTANCE cell_32_area_pos METHOD edge_area
+METHOD_INSTANCE cell_32_area_neg METHOD edge_area
+PARAMETER cell_32_p0 = 3.600000000
+PARAMETER cell_32_r = 1.000000000
+QUANTITY cell_32_energy ENERGY FUNCTION
+	(cell_32_area_pos.value - cell_32_area_neg.value - 1)^2 +
+	(cell_32_peri.value - cell_32_p0)^2/cell_32_r
+
+
+METHOD_INSTANCE cell_33_peri METHOD edge_length
+METHOD_INSTANCE cell_33_area_pos METHOD edge_area
+METHOD_INSTANCE cell_33_area_neg METHOD edge_area
+PARAMETER cell_33_p0 = 3.600000000
+PARAMETER cell_33_r = 1.000000000
+QUANTITY cell_33_energy ENERGY FUNCTION
+	(cell_33_area_pos.value - cell_33_area_neg.value - 1)^2 +
+	(cell_33_peri.value - cell_33_p0)^2/cell_33_r
+
+
+METHOD_INSTANCE cell_34_peri METHOD edge_length
+METHOD_INSTANCE cell_34_area_pos METHOD edge_area
+METHOD_INSTANCE cell_34_area_neg METHOD edge_area
+PARAMETER cell_34_p0 = 3.600000000
+PARAMETER cell_34_r = 1.000000000
+QUANTITY cell_34_energy ENERGY FUNCTION
+	(cell_34_area_pos.value - cell_34_area_neg.value - 1)^2 +
+	(cell_34_peri.value - cell_34_p0)^2/cell_34_r
+
+
+METHOD_INSTANCE cell_35_peri METHOD edge_length
+METHOD_INSTANCE cell_35_area_pos METHOD edge_area
+METHOD_INSTANCE cell_35_area_neg METHOD edge_area
+PARAMETER cell_35_p0 = 3.600000000
+PARAMETER cell_35_r = 1.000000000
+QUANTITY cell_35_energy ENERGY FUNCTION
+	(cell_35_area_pos.value - cell_35_area_neg.value - 1)^2 +
+	(cell_35_peri.value - cell_35_p0)^2/cell_35_r
+
+
+METHOD_INSTANCE cell_36_peri METHOD edge_length
+METHOD_INSTANCE cell_36_area_pos METHOD edge_area
+METHOD_INSTANCE cell_36_area_neg METHOD edge_area
+PARAMETER cell_36_p0 = 3.600000000
+PARAMETER cell_36_r = 1.000000000
+QUANTITY cell_36_energy ENERGY FUNCTION
+	(cell_36_area_pos.value - cell_36_area_neg.value - 1)^2 +
+	(cell_36_peri.value - cell_36_p0)^2/cell_36_r
+
+
+METHOD_INSTANCE cell_37_peri METHOD edge_length
+METHOD_INSTANCE cell_37_area_pos METHOD edge_area
+METHOD_INSTANCE cell_37_area_neg METHOD edge_area
+PARAMETER cell_37_p0 = 3.600000000
+PARAMETER cell_37_r = 1.000000000
+QUANTITY cell_37_energy ENERGY FUNCTION
+	(cell_37_area_pos.value - cell_37_area_neg.value - 1)^2 +
+	(cell_37_peri.value - cell_37_p0)^2/cell_37_r
+
+
+METHOD_INSTANCE cell_38_peri METHOD edge_length
+METHOD_INSTANCE cell_38_area_pos METHOD edge_area
+METHOD_INSTANCE cell_38_area_neg METHOD edge_area
+PARAMETER cell_38_p0 = 3.600000000
+PARAMETER cell_38_r = 1.000000000
+QUANTITY cell_38_energy ENERGY FUNCTION
+	(cell_38_area_pos.value - cell_38_area_neg.value - 1)^2 +
+	(cell_38_peri.value - cell_38_p0)^2/cell_38_r
+
+
+METHOD_INSTANCE cell_39_peri METHOD edge_length
+METHOD_INSTANCE cell_39_area_pos METHOD edge_area
+METHOD_INSTANCE cell_39_area_neg METHOD edge_area
+PARAMETER cell_39_p0 = 3.600000000
+PARAMETER cell_39_r = 1.000000000
+QUANTITY cell_39_energy ENERGY FUNCTION
+	(cell_39_area_pos.value - cell_39_area_neg.value - 1)^2 +
+	(cell_39_peri.value - cell_39_p0)^2/cell_39_r
+
+
+METHOD_INSTANCE cell_40_peri METHOD edge_length
+METHOD_INSTANCE cell_40_area_pos METHOD edge_area
+METHOD_INSTANCE cell_40_area_neg METHOD edge_area
+PARAMETER cell_40_p0 = 3.600000000
+PARAMETER cell_40_r = 1.000000000
+QUANTITY cell_40_energy ENERGY FUNCTION
+	(cell_40_area_pos.value - cell_40_area_neg.value - 1)^2 +
+	(cell_40_peri.value - cell_40_p0)^2/cell_40_r
+
+
+METHOD_INSTANCE cell_41_peri METHOD edge_length
+METHOD_INSTANCE cell_41_area_pos METHOD edge_area
+METHOD_INSTANCE cell_41_area_neg METHOD edge_area
+PARAMETER cell_41_p0 = 3.600000000
+PARAMETER cell_41_r = 1.000000000
+QUANTITY cell_41_energy ENERGY FUNCTION
+	(cell_41_area_pos.value - cell_41_area_neg.value - 1)^2 +
+	(cell_41_peri.value - cell_41_p0)^2/cell_41_r
+
+
+METHOD_INSTANCE cell_42_peri METHOD edge_length
+METHOD_INSTANCE cell_42_area_pos METHOD edge_area
+METHOD_INSTANCE cell_42_area_neg METHOD edge_area
+PARAMETER cell_42_p0 = 3.600000000
+PARAMETER cell_42_r = 1.000000000
+QUANTITY cell_42_energy ENERGY FUNCTION
+	(cell_42_area_pos.value - cell_42_area_neg.value - 1)^2 +
+	(cell_42_peri.value - cell_42_p0)^2/cell_42_r
+
+
+METHOD_INSTANCE cell_43_peri METHOD edge_length
+METHOD_INSTANCE cell_43_area_pos METHOD edge_area
+METHOD_INSTANCE cell_43_area_neg METHOD edge_area
+PARAMETER cell_43_p0 = 3.600000000
+PARAMETER cell_43_r = 1.000000000
+QUANTITY cell_43_energy ENERGY FUNCTION
+	(cell_43_area_pos.value - cell_43_area_neg.value - 1)^2 +
+	(cell_43_peri.value - cell_43_p0)^2/cell_43_r
+
+
+METHOD_INSTANCE cell_44_peri METHOD edge_length
+METHOD_INSTANCE cell_44_area_pos METHOD edge_area
+METHOD_INSTANCE cell_44_area_neg METHOD edge_area
+PARAMETER cell_44_p0 = 3.600000000
+PARAMETER cell_44_r = 1.000000000
+QUANTITY cell_44_energy ENERGY FUNCTION
+	(cell_44_area_pos.value - cell_44_area_neg.value - 1)^2 +
+	(cell_44_peri.value - cell_44_p0)^2/cell_44_r
+
+
+METHOD_INSTANCE cell_45_peri METHOD edge_length
+METHOD_INSTANCE cell_45_area_pos METHOD edge_area
+METHOD_INSTANCE cell_45_area_neg METHOD edge_area
+PARAMETER cell_45_p0 = 3.600000000
+PARAMETER cell_45_r = 1.000000000
+QUANTITY cell_45_energy ENERGY FUNCTION
+	(cell_45_area_pos.value - cell_45_area_neg.value - 1)^2 +
+	(cell_45_peri.value - cell_45_p0)^2/cell_45_r
+
+
+METHOD_INSTANCE cell_46_peri METHOD edge_length
+METHOD_INSTANCE cell_46_area_pos METHOD edge_area
+METHOD_INSTANCE cell_46_area_neg METHOD edge_area
+PARAMETER cell_46_p0 = 3.600000000
+PARAMETER cell_46_r = 1.000000000
+QUANTITY cell_46_energy ENERGY FUNCTION
+	(cell_46_area_pos.value - cell_46_area_neg.value - 1)^2 +
+	(cell_46_peri.value - cell_46_p0)^2/cell_46_r
+
+
+METHOD_INSTANCE cell_47_peri METHOD edge_length
+METHOD_INSTANCE cell_47_area_pos METHOD edge_area
+METHOD_INSTANCE cell_47_area_neg METHOD edge_area
+PARAMETER cell_47_p0 = 3.600000000
+PARAMETER cell_47_r = 1.000000000
+QUANTITY cell_47_energy ENERGY FUNCTION
+	(cell_47_area_pos.value - cell_47_area_neg.value - 1)^2 +
+	(cell_47_peri.value - cell_47_p0)^2/cell_47_r
+
+
+METHOD_INSTANCE cell_48_peri METHOD edge_length
+METHOD_INSTANCE cell_48_area_pos METHOD edge_area
+METHOD_INSTANCE cell_48_area_neg METHOD edge_area
+PARAMETER cell_48_p0 = 3.600000000
+PARAMETER cell_48_r = 1.000000000
+QUANTITY cell_48_energy ENERGY FUNCTION
+	(cell_48_area_pos.value - cell_48_area_neg.value - 1)^2 +
+	(cell_48_peri.value - cell_48_p0)^2/cell_48_r
+
+
+METHOD_INSTANCE cell_49_peri METHOD edge_length
+METHOD_INSTANCE cell_49_area_pos METHOD edge_area
+METHOD_INSTANCE cell_49_area_neg METHOD edge_area
+PARAMETER cell_49_p0 = 3.600000000
+PARAMETER cell_49_r = 1.000000000
+QUANTITY cell_49_energy ENERGY FUNCTION
+	(cell_49_area_pos.value - cell_49_area_neg.value - 1)^2 +
+	(cell_49_peri.value - cell_49_p0)^2/cell_49_r
+
+
+METHOD_INSTANCE cell_50_peri METHOD edge_length
+METHOD_INSTANCE cell_50_area_pos METHOD edge_area
+METHOD_INSTANCE cell_50_area_neg METHOD edge_area
+PARAMETER cell_50_p0 = 3.600000000
+PARAMETER cell_50_r = 1.000000000
+QUANTITY cell_50_energy ENERGY FUNCTION
+	(cell_50_area_pos.value - cell_50_area_neg.value - 1)^2 +
+	(cell_50_peri.value - cell_50_p0)^2/cell_50_r
+
+
+METHOD_INSTANCE cell_51_peri METHOD edge_length
+METHOD_INSTANCE cell_51_area_pos METHOD edge_area
+METHOD_INSTANCE cell_51_area_neg METHOD edge_area
+PARAMETER cell_51_p0 = 3.600000000
+PARAMETER cell_51_r = 1.000000000
+QUANTITY cell_51_energy ENERGY FUNCTION
+	(cell_51_area_pos.value - cell_51_area_neg.value - 1)^2 +
+	(cell_51_peri.value - cell_51_p0)^2/cell_51_r
+
+
+METHOD_INSTANCE cell_52_peri METHOD edge_length
+METHOD_INSTANCE cell_52_area_pos METHOD edge_area
+METHOD_INSTANCE cell_52_area_neg METHOD edge_area
+PARAMETER cell_52_p0 = 3.600000000
+PARAMETER cell_52_r = 1.000000000
+QUANTITY cell_52_energy ENERGY FUNCTION
+	(cell_52_area_pos.value - cell_52_area_neg.value - 1)^2 +
+	(cell_52_peri.value - cell_52_p0)^2/cell_52_r
+
+
+METHOD_INSTANCE cell_53_peri METHOD edge_length
+METHOD_INSTANCE cell_53_area_pos METHOD edge_area
+METHOD_INSTANCE cell_53_area_neg METHOD edge_area
+PARAMETER cell_53_p0 = 3.600000000
+PARAMETER cell_53_r = 1.000000000
+QUANTITY cell_53_energy ENERGY FUNCTION
+	(cell_53_area_pos.value - cell_53_area_neg.value - 1)^2 +
+	(cell_53_peri.value - cell_53_p0)^2/cell_53_r
+
+
+METHOD_INSTANCE cell_54_peri METHOD edge_length
+METHOD_INSTANCE cell_54_area_pos METHOD edge_area
+METHOD_INSTANCE cell_54_area_neg METHOD edge_area
+PARAMETER cell_54_p0 = 3.600000000
+PARAMETER cell_54_r = 1.000000000
+QUANTITY cell_54_energy ENERGY FUNCTION
+	(cell_54_area_pos.value - cell_54_area_neg.value - 1)^2 +
+	(cell_54_peri.value - cell_54_p0)^2/cell_54_r
+
+
+METHOD_INSTANCE cell_55_peri METHOD edge_length
+METHOD_INSTANCE cell_55_area_pos METHOD edge_area
+METHOD_INSTANCE cell_55_area_neg METHOD edge_area
+PARAMETER cell_55_p0 = 3.600000000
+PARAMETER cell_55_r = 1.000000000
+QUANTITY cell_55_energy ENERGY FUNCTION
+	(cell_55_area_pos.value - cell_55_area_neg.value - 1)^2 +
+	(cell_55_peri.value - cell_55_p0)^2/cell_55_r
+
+
+METHOD_INSTANCE cell_56_peri METHOD edge_length
+METHOD_INSTANCE cell_56_area_pos METHOD edge_area
+METHOD_INSTANCE cell_56_area_neg METHOD edge_area
+PARAMETER cell_56_p0 = 3.600000000
+PARAMETER cell_56_r = 1.000000000
+QUANTITY cell_56_energy ENERGY FUNCTION
+	(cell_56_area_pos.value - cell_56_area_neg.value - 1)^2 +
+	(cell_56_peri.value - cell_56_p0)^2/cell_56_r
+
+
+METHOD_INSTANCE cell_57_peri METHOD edge_length
+METHOD_INSTANCE cell_57_area_pos METHOD edge_area
+METHOD_INSTANCE cell_57_area_neg METHOD edge_area
+PARAMETER cell_57_p0 = 3.600000000
+PARAMETER cell_57_r = 1.000000000
+QUANTITY cell_57_energy ENERGY FUNCTION
+	(cell_57_area_pos.value - cell_57_area_neg.value - 1)^2 +
+	(cell_57_peri.value - cell_57_p0)^2/cell_57_r
+
+
+METHOD_INSTANCE cell_58_peri METHOD edge_length
+METHOD_INSTANCE cell_58_area_pos METHOD edge_area
+METHOD_INSTANCE cell_58_area_neg METHOD edge_area
+PARAMETER cell_58_p0 = 3.600000000
+PARAMETER cell_58_r = 1.000000000
+QUANTITY cell_58_energy ENERGY FUNCTION
+	(cell_58_area_pos.value - cell_58_area_neg.value - 1)^2 +
+	(cell_58_peri.value - cell_58_p0)^2/cell_58_r
+
+
+METHOD_INSTANCE cell_59_peri METHOD edge_length
+METHOD_INSTANCE cell_59_area_pos METHOD edge_area
+METHOD_INSTANCE cell_59_area_neg METHOD edge_area
+PARAMETER cell_59_p0 = 3.600000000
+PARAMETER cell_59_r = 1.000000000
+QUANTITY cell_59_energy ENERGY FUNCTION
+	(cell_59_area_pos.value - cell_59_area_neg.value - 1)^2 +
+	(cell_59_peri.value - cell_59_p0)^2/cell_59_r
+
+
+METHOD_INSTANCE cell_60_peri METHOD edge_length
+METHOD_INSTANCE cell_60_area_pos METHOD edge_area
+METHOD_INSTANCE cell_60_area_neg METHOD edge_area
+PARAMETER cell_60_p0 = 3.600000000
+PARAMETER cell_60_r = 1.000000000
+QUANTITY cell_60_energy ENERGY FUNCTION
+	(cell_60_area_pos.value - cell_60_area_neg.value - 1)^2 +
+	(cell_60_peri.value - cell_60_p0)^2/cell_60_r
+
+
+METHOD_INSTANCE cell_61_peri METHOD edge_length
+METHOD_INSTANCE cell_61_area_pos METHOD edge_area
+METHOD_INSTANCE cell_61_area_neg METHOD edge_area
+PARAMETER cell_61_p0 = 3.600000000
+PARAMETER cell_61_r = 1.000000000
+QUANTITY cell_61_energy ENERGY FUNCTION
+	(cell_61_area_pos.value - cell_61_area_neg.value - 1)^2 +
+	(cell_61_peri.value - cell_61_p0)^2/cell_61_r
+
+
+METHOD_INSTANCE cell_62_peri METHOD edge_length
+METHOD_INSTANCE cell_62_area_pos METHOD edge_area
+METHOD_INSTANCE cell_62_area_neg METHOD edge_area
+PARAMETER cell_62_p0 = 3.600000000
+PARAMETER cell_62_r = 1.000000000
+QUANTITY cell_62_energy ENERGY FUNCTION
+	(cell_62_area_pos.value - cell_62_area_neg.value - 1)^2 +
+	(cell_62_peri.value - cell_62_p0)^2/cell_62_r
+
+
+METHOD_INSTANCE cell_63_peri METHOD edge_length
+METHOD_INSTANCE cell_63_area_pos METHOD edge_area
+METHOD_INSTANCE cell_63_area_neg METHOD edge_area
+PARAMETER cell_63_p0 = 3.600000000
+PARAMETER cell_63_r = 1.000000000
+QUANTITY cell_63_energy ENERGY FUNCTION
+	(cell_63_area_pos.value - cell_63_area_neg.value - 1)^2 +
+	(cell_63_peri.value - cell_63_p0)^2/cell_63_r
+
+
+METHOD_INSTANCE cell_64_peri METHOD edge_length
+METHOD_INSTANCE cell_64_area_pos METHOD edge_area
+METHOD_INSTANCE cell_64_area_neg METHOD edge_area
+PARAMETER cell_64_p0 = 3.600000000
+PARAMETER cell_64_r = 1.000000000
+QUANTITY cell_64_energy ENERGY FUNCTION
+	(cell_64_area_pos.value - cell_64_area_neg.value - 1)^2 +
+	(cell_64_peri.value - cell_64_p0)^2/cell_64_r
+
+
+METHOD_INSTANCE cell_65_peri METHOD edge_length
+METHOD_INSTANCE cell_65_area_pos METHOD edge_area
+METHOD_INSTANCE cell_65_area_neg METHOD edge_area
+PARAMETER cell_65_p0 = 3.600000000
+PARAMETER cell_65_r = 1.000000000
+QUANTITY cell_65_energy ENERGY FUNCTION
+	(cell_65_area_pos.value - cell_65_area_neg.value - 1)^2 +
+	(cell_65_peri.value - cell_65_p0)^2/cell_65_r
+
+
+METHOD_INSTANCE cell_66_peri METHOD edge_length
+METHOD_INSTANCE cell_66_area_pos METHOD edge_area
+METHOD_INSTANCE cell_66_area_neg METHOD edge_area
+PARAMETER cell_66_p0 = 3.600000000
+PARAMETER cell_66_r = 1.000000000
+QUANTITY cell_66_energy ENERGY FUNCTION
+	(cell_66_area_pos.value - cell_66_area_neg.value - 1)^2 +
+	(cell_66_peri.value - cell_66_p0)^2/cell_66_r
+
+
+METHOD_INSTANCE cell_67_peri METHOD edge_length
+METHOD_INSTANCE cell_67_area_pos METHOD edge_area
+METHOD_INSTANCE cell_67_area_neg METHOD edge_area
+PARAMETER cell_67_p0 = 3.600000000
+PARAMETER cell_67_r = 1.000000000
+QUANTITY cell_67_energy ENERGY FUNCTION
+	(cell_67_area_pos.value - cell_67_area_neg.value - 1)^2 +
+	(cell_67_peri.value - cell_67_p0)^2/cell_67_r
+
+
+METHOD_INSTANCE cell_68_peri METHOD edge_length
+METHOD_INSTANCE cell_68_area_pos METHOD edge_area
+METHOD_INSTANCE cell_68_area_neg METHOD edge_area
+PARAMETER cell_68_p0 = 3.600000000
+PARAMETER cell_68_r = 1.000000000
+QUANTITY cell_68_energy ENERGY FUNCTION
+	(cell_68_area_pos.value - cell_68_area_neg.value - 1)^2 +
+	(cell_68_peri.value - cell_68_p0)^2/cell_68_r
+
+
+METHOD_INSTANCE cell_69_peri METHOD edge_length
+METHOD_INSTANCE cell_69_area_pos METHOD edge_area
+METHOD_INSTANCE cell_69_area_neg METHOD edge_area
+PARAMETER cell_69_p0 = 3.600000000
+PARAMETER cell_69_r = 1.000000000
+QUANTITY cell_69_energy ENERGY FUNCTION
+	(cell_69_area_pos.value - cell_69_area_neg.value - 1)^2 +
+	(cell_69_peri.value - cell_69_p0)^2/cell_69_r
+
+
+METHOD_INSTANCE cell_70_peri METHOD edge_length
+METHOD_INSTANCE cell_70_area_pos METHOD edge_area
+METHOD_INSTANCE cell_70_area_neg METHOD edge_area
+PARAMETER cell_70_p0 = 3.600000000
+PARAMETER cell_70_r = 1.000000000
+QUANTITY cell_70_energy ENERGY FUNCTION
+	(cell_70_area_pos.value - cell_70_area_neg.value - 1)^2 +
+	(cell_70_peri.value - cell_70_p0)^2/cell_70_r
+
+
+METHOD_INSTANCE cell_71_peri METHOD edge_length
+METHOD_INSTANCE cell_71_area_pos METHOD edge_area
+METHOD_INSTANCE cell_71_area_neg METHOD edge_area
+PARAMETER cell_71_p0 = 3.600000000
+PARAMETER cell_71_r = 1.000000000
+QUANTITY cell_71_energy ENERGY FUNCTION
+	(cell_71_area_pos.value - cell_71_area_neg.value - 1)^2 +
+	(cell_71_peri.value - cell_71_p0)^2/cell_71_r
+
+
+METHOD_INSTANCE cell_72_peri METHOD edge_length
+METHOD_INSTANCE cell_72_area_pos METHOD edge_area
+METHOD_INSTANCE cell_72_area_neg METHOD edge_area
+PARAMETER cell_72_p0 = 3.600000000
+PARAMETER cell_72_r = 1.000000000
+QUANTITY cell_72_energy ENERGY FUNCTION
+	(cell_72_area_pos.value - cell_72_area_neg.value - 1)^2 +
+	(cell_72_peri.value - cell_72_p0)^2/cell_72_r
+
+
+METHOD_INSTANCE cell_73_peri METHOD edge_length
+METHOD_INSTANCE cell_73_area_pos METHOD edge_area
+METHOD_INSTANCE cell_73_area_neg METHOD edge_area
+PARAMETER cell_73_p0 = 3.600000000
+PARAMETER cell_73_r = 1.000000000
+QUANTITY cell_73_energy ENERGY FUNCTION
+	(cell_73_area_pos.value - cell_73_area_neg.value - 1)^2 +
+	(cell_73_peri.value - cell_73_p0)^2/cell_73_r
+
+
+METHOD_INSTANCE cell_74_peri METHOD edge_length
+METHOD_INSTANCE cell_74_area_pos METHOD edge_area
+METHOD_INSTANCE cell_74_area_neg METHOD edge_area
+PARAMETER cell_74_p0 = 3.600000000
+PARAMETER cell_74_r = 1.000000000
+QUANTITY cell_74_energy ENERGY FUNCTION
+	(cell_74_area_pos.value - cell_74_area_neg.value - 1)^2 +
+	(cell_74_peri.value - cell_74_p0)^2/cell_74_r
+
+
+METHOD_INSTANCE cell_75_peri METHOD edge_length
+METHOD_INSTANCE cell_75_area_pos METHOD edge_area
+METHOD_INSTANCE cell_75_area_neg METHOD edge_area
+PARAMETER cell_75_p0 = 3.600000000
+PARAMETER cell_75_r = 1.000000000
+QUANTITY cell_75_energy ENERGY FUNCTION
+	(cell_75_area_pos.value - cell_75_area_neg.value - 1)^2 +
+	(cell_75_peri.value - cell_75_p0)^2/cell_75_r
+
+
+METHOD_INSTANCE cell_76_peri METHOD edge_length
+METHOD_INSTANCE cell_76_area_pos METHOD edge_area
+METHOD_INSTANCE cell_76_area_neg METHOD edge_area
+PARAMETER cell_76_p0 = 3.600000000
+PARAMETER cell_76_r = 1.000000000
+QUANTITY cell_76_energy ENERGY FUNCTION
+	(cell_76_area_pos.value - cell_76_area_neg.value - 1)^2 +
+	(cell_76_peri.value - cell_76_p0)^2/cell_76_r
+
+
+METHOD_INSTANCE cell_77_peri METHOD edge_length
+METHOD_INSTANCE cell_77_area_pos METHOD edge_area
+METHOD_INSTANCE cell_77_area_neg METHOD edge_area
+PARAMETER cell_77_p0 = 3.600000000
+PARAMETER cell_77_r = 1.000000000
+QUANTITY cell_77_energy ENERGY FUNCTION
+	(cell_77_area_pos.value - cell_77_area_neg.value - 1)^2 +
+	(cell_77_peri.value - cell_77_p0)^2/cell_77_r
+
+
+METHOD_INSTANCE cell_78_peri METHOD edge_length
+METHOD_INSTANCE cell_78_area_pos METHOD edge_area
+METHOD_INSTANCE cell_78_area_neg METHOD edge_area
+PARAMETER cell_78_p0 = 3.600000000
+PARAMETER cell_78_r = 1.000000000
+QUANTITY cell_78_energy ENERGY FUNCTION
+	(cell_78_area_pos.value - cell_78_area_neg.value - 1)^2 +
+	(cell_78_peri.value - cell_78_p0)^2/cell_78_r
+
+
+METHOD_INSTANCE cell_79_peri METHOD edge_length
+METHOD_INSTANCE cell_79_area_pos METHOD edge_area
+METHOD_INSTANCE cell_79_area_neg METHOD edge_area
+PARAMETER cell_79_p0 = 3.600000000
+PARAMETER cell_79_r = 1.000000000
+QUANTITY cell_79_energy ENERGY FUNCTION
+	(cell_79_area_pos.value - cell_79_area_neg.value - 1)^2 +
+	(cell_79_peri.value - cell_79_p0)^2/cell_79_r
+
+
+METHOD_INSTANCE cell_80_peri METHOD edge_length
+METHOD_INSTANCE cell_80_area_pos METHOD edge_area
+METHOD_INSTANCE cell_80_area_neg METHOD edge_area
+PARAMETER cell_80_p0 = 3.600000000
+PARAMETER cell_80_r = 1.000000000
+QUANTITY cell_80_energy ENERGY FUNCTION
+	(cell_80_area_pos.value - cell_80_area_neg.value - 1)^2 +
+	(cell_80_peri.value - cell_80_p0)^2/cell_80_r
+
+
+METHOD_INSTANCE cell_81_peri METHOD edge_length
+METHOD_INSTANCE cell_81_area_pos METHOD edge_area
+METHOD_INSTANCE cell_81_area_neg METHOD edge_area
+PARAMETER cell_81_p0 = 3.600000000
+PARAMETER cell_81_r = 1.000000000
+QUANTITY cell_81_energy ENERGY FUNCTION
+	(cell_81_area_pos.value - cell_81_area_neg.value - 1)^2 +
+	(cell_81_peri.value - cell_81_p0)^2/cell_81_r
+
+
+METHOD_INSTANCE cell_82_peri METHOD edge_length
+METHOD_INSTANCE cell_82_area_pos METHOD edge_area
+METHOD_INSTANCE cell_82_area_neg METHOD edge_area
+PARAMETER cell_82_p0 = 3.600000000
+PARAMETER cell_82_r = 1.000000000
+QUANTITY cell_82_energy ENERGY FUNCTION
+	(cell_82_area_pos.value - cell_82_area_neg.value - 1)^2 +
+	(cell_82_peri.value - cell_82_p0)^2/cell_82_r
+
+
+METHOD_INSTANCE cell_83_peri METHOD edge_length
+METHOD_INSTANCE cell_83_area_pos METHOD edge_area
+METHOD_INSTANCE cell_83_area_neg METHOD edge_area
+PARAMETER cell_83_p0 = 3.600000000
+PARAMETER cell_83_r = 1.000000000
+QUANTITY cell_83_energy ENERGY FUNCTION
+	(cell_83_area_pos.value - cell_83_area_neg.value - 1)^2 +
+	(cell_83_peri.value - cell_83_p0)^2/cell_83_r
+
+
+METHOD_INSTANCE cell_84_peri METHOD edge_length
+METHOD_INSTANCE cell_84_area_pos METHOD edge_area
+METHOD_INSTANCE cell_84_area_neg METHOD edge_area
+PARAMETER cell_84_p0 = 3.600000000
+PARAMETER cell_84_r = 1.000000000
+QUANTITY cell_84_energy ENERGY FUNCTION
+	(cell_84_area_pos.value - cell_84_area_neg.value - 1)^2 +
+	(cell_84_peri.value - cell_84_p0)^2/cell_84_r
+
+
+METHOD_INSTANCE cell_85_peri METHOD edge_length
+METHOD_INSTANCE cell_85_area_pos METHOD edge_area
+METHOD_INSTANCE cell_85_area_neg METHOD edge_area
+PARAMETER cell_85_p0 = 3.600000000
+PARAMETER cell_85_r = 1.000000000
+QUANTITY cell_85_energy ENERGY FUNCTION
+	(cell_85_area_pos.value - cell_85_area_neg.value - 1)^2 +
+	(cell_85_peri.value - cell_85_p0)^2/cell_85_r
+
+
+METHOD_INSTANCE cell_86_peri METHOD edge_length
+METHOD_INSTANCE cell_86_area_pos METHOD edge_area
+METHOD_INSTANCE cell_86_area_neg METHOD edge_area
+PARAMETER cell_86_p0 = 3.600000000
+PARAMETER cell_86_r = 1.000000000
+QUANTITY cell_86_energy ENERGY FUNCTION
+	(cell_86_area_pos.value - cell_86_area_neg.value - 1)^2 +
+	(cell_86_peri.value - cell_86_p0)^2/cell_86_r
+
+
+METHOD_INSTANCE cell_87_peri METHOD edge_length
+METHOD_INSTANCE cell_87_area_pos METHOD edge_area
+METHOD_INSTANCE cell_87_area_neg METHOD edge_area
+PARAMETER cell_87_p0 = 3.600000000
+PARAMETER cell_87_r = 1.000000000
+QUANTITY cell_87_energy ENERGY FUNCTION
+	(cell_87_area_pos.value - cell_87_area_neg.value - 1)^2 +
+	(cell_87_peri.value - cell_87_p0)^2/cell_87_r
+
+
+METHOD_INSTANCE cell_88_peri METHOD edge_length
+METHOD_INSTANCE cell_88_area_pos METHOD edge_area
+METHOD_INSTANCE cell_88_area_neg METHOD edge_area
+PARAMETER cell_88_p0 = 3.600000000
+PARAMETER cell_88_r = 1.000000000
+QUANTITY cell_88_energy ENERGY FUNCTION
+	(cell_88_area_pos.value - cell_88_area_neg.value - 1)^2 +
+	(cell_88_peri.value - cell_88_p0)^2/cell_88_r
+
+
+METHOD_INSTANCE cell_89_peri METHOD edge_length
+METHOD_INSTANCE cell_89_area_pos METHOD edge_area
+METHOD_INSTANCE cell_89_area_neg METHOD edge_area
+PARAMETER cell_89_p0 = 3.600000000
+PARAMETER cell_89_r = 1.000000000
+QUANTITY cell_89_energy ENERGY FUNCTION
+	(cell_89_area_pos.value - cell_89_area_neg.value - 1)^2 +
+	(cell_89_peri.value - cell_89_p0)^2/cell_89_r
+
+
+METHOD_INSTANCE cell_90_peri METHOD edge_length
+METHOD_INSTANCE cell_90_area_pos METHOD edge_area
+METHOD_INSTANCE cell_90_area_neg METHOD edge_area
+PARAMETER cell_90_p0 = 3.600000000
+PARAMETER cell_90_r = 1.000000000
+QUANTITY cell_90_energy ENERGY FUNCTION
+	(cell_90_area_pos.value - cell_90_area_neg.value - 1)^2 +
+	(cell_90_peri.value - cell_90_p0)^2/cell_90_r
+
+
+METHOD_INSTANCE cell_91_peri METHOD edge_length
+METHOD_INSTANCE cell_91_area_pos METHOD edge_area
+METHOD_INSTANCE cell_91_area_neg METHOD edge_area
+PARAMETER cell_91_p0 = 3.600000000
+PARAMETER cell_91_r = 1.000000000
+QUANTITY cell_91_energy ENERGY FUNCTION
+	(cell_91_area_pos.value - cell_91_area_neg.value - 1)^2 +
+	(cell_91_peri.value - cell_91_p0)^2/cell_91_r
+
+
+METHOD_INSTANCE cell_92_peri METHOD edge_length
+METHOD_INSTANCE cell_92_area_pos METHOD edge_area
+METHOD_INSTANCE cell_92_area_neg METHOD edge_area
+PARAMETER cell_92_p0 = 3.600000000
+PARAMETER cell_92_r = 1.000000000
+QUANTITY cell_92_energy ENERGY FUNCTION
+	(cell_92_area_pos.value - cell_92_area_neg.value - 1)^2 +
+	(cell_92_peri.value - cell_92_p0)^2/cell_92_r
+
+
+METHOD_INSTANCE cell_93_peri METHOD edge_length
+METHOD_INSTANCE cell_93_area_pos METHOD edge_area
+METHOD_INSTANCE cell_93_area_neg METHOD edge_area
+PARAMETER cell_93_p0 = 3.600000000
+PARAMETER cell_93_r = 1.000000000
+QUANTITY cell_93_energy ENERGY FUNCTION
+	(cell_93_area_pos.value - cell_93_area_neg.value - 1)^2 +
+	(cell_93_peri.value - cell_93_p0)^2/cell_93_r
+
+
+METHOD_INSTANCE cell_94_peri METHOD edge_length
+METHOD_INSTANCE cell_94_area_pos METHOD edge_area
+METHOD_INSTANCE cell_94_area_neg METHOD edge_area
+PARAMETER cell_94_p0 = 3.600000000
+PARAMETER cell_94_r = 1.000000000
+QUANTITY cell_94_energy ENERGY FUNCTION
+	(cell_94_area_pos.value - cell_94_area_neg.value - 1)^2 +
+	(cell_94_peri.value - cell_94_p0)^2/cell_94_r
+
+
+METHOD_INSTANCE cell_95_peri METHOD edge_length
+METHOD_INSTANCE cell_95_area_pos METHOD edge_area
+METHOD_INSTANCE cell_95_area_neg METHOD edge_area
+PARAMETER cell_95_p0 = 3.600000000
+PARAMETER cell_95_r = 1.000000000
+QUANTITY cell_95_energy ENERGY FUNCTION
+	(cell_95_area_pos.value - cell_95_area_neg.value - 1)^2 +
+	(cell_95_peri.value - cell_95_p0)^2/cell_95_r
+
+
+METHOD_INSTANCE cell_96_peri METHOD edge_length
+METHOD_INSTANCE cell_96_area_pos METHOD edge_area
+METHOD_INSTANCE cell_96_area_neg METHOD edge_area
+PARAMETER cell_96_p0 = 3.600000000
+PARAMETER cell_96_r = 1.000000000
+QUANTITY cell_96_energy ENERGY FUNCTION
+	(cell_96_area_pos.value - cell_96_area_neg.value - 1)^2 +
+	(cell_96_peri.value - cell_96_p0)^2/cell_96_r
+
+
+METHOD_INSTANCE cell_97_peri METHOD edge_length
+METHOD_INSTANCE cell_97_area_pos METHOD edge_area
+METHOD_INSTANCE cell_97_area_neg METHOD edge_area
+PARAMETER cell_97_p0 = 3.600000000
+PARAMETER cell_97_r = 1.000000000
+QUANTITY cell_97_energy ENERGY FUNCTION
+	(cell_97_area_pos.value - cell_97_area_neg.value - 1)^2 +
+	(cell_97_peri.value - cell_97_p0)^2/cell_97_r
+
+
+METHOD_INSTANCE cell_98_peri METHOD edge_length
+METHOD_INSTANCE cell_98_area_pos METHOD edge_area
+METHOD_INSTANCE cell_98_area_neg METHOD edge_area
+PARAMETER cell_98_p0 = 3.600000000
+PARAMETER cell_98_r = 1.000000000
+QUANTITY cell_98_energy ENERGY FUNCTION
+	(cell_98_area_pos.value - cell_98_area_neg.value - 1)^2 +
+	(cell_98_peri.value - cell_98_p0)^2/cell_98_r
+
+
+METHOD_INSTANCE cell_99_peri METHOD edge_length
+METHOD_INSTANCE cell_99_area_pos METHOD edge_area
+METHOD_INSTANCE cell_99_area_neg METHOD edge_area
+PARAMETER cell_99_p0 = 3.600000000
+PARAMETER cell_99_r = 1.000000000
+QUANTITY cell_99_energy ENERGY FUNCTION
+	(cell_99_area_pos.value - cell_99_area_neg.value - 1)^2 +
+	(cell_99_peri.value - cell_99_p0)^2/cell_99_r
+
+
+METHOD_INSTANCE cell_100_peri METHOD edge_length
+METHOD_INSTANCE cell_100_area_pos METHOD edge_area
+METHOD_INSTANCE cell_100_area_neg METHOD edge_area
+PARAMETER cell_100_p0 = 3.600000000
+PARAMETER cell_100_r = 1.000000000
+QUANTITY cell_100_energy ENERGY FUNCTION
+	(cell_100_area_pos.value - cell_100_area_neg.value - 1)^2 +
+	(cell_100_peri.value - cell_100_p0)^2/cell_100_r
+
+
+METHOD_INSTANCE cell_101_peri METHOD edge_length
+METHOD_INSTANCE cell_101_area_pos METHOD edge_area
+METHOD_INSTANCE cell_101_area_neg METHOD edge_area
+PARAMETER cell_101_p0 = 3.600000000
+PARAMETER cell_101_r = 1.000000000
+QUANTITY cell_101_energy ENERGY FUNCTION
+	(cell_101_area_pos.value - cell_101_area_neg.value - 1)^2 +
+	(cell_101_peri.value - cell_101_p0)^2/cell_101_r
+
+
+METHOD_INSTANCE cell_102_peri METHOD edge_length
+METHOD_INSTANCE cell_102_area_pos METHOD edge_area
+METHOD_INSTANCE cell_102_area_neg METHOD edge_area
+PARAMETER cell_102_p0 = 3.600000000
+PARAMETER cell_102_r = 1.000000000
+QUANTITY cell_102_energy ENERGY FUNCTION
+	(cell_102_area_pos.value - cell_102_area_neg.value - 1)^2 +
+	(cell_102_peri.value - cell_102_p0)^2/cell_102_r
+
+
+METHOD_INSTANCE cell_103_peri METHOD edge_length
+METHOD_INSTANCE cell_103_area_pos METHOD edge_area
+METHOD_INSTANCE cell_103_area_neg METHOD edge_area
+PARAMETER cell_103_p0 = 3.600000000
+PARAMETER cell_103_r = 1.000000000
+QUANTITY cell_103_energy ENERGY FUNCTION
+	(cell_103_area_pos.value - cell_103_area_neg.value - 1)^2 +
+	(cell_103_peri.value - cell_103_p0)^2/cell_103_r
+
+
+METHOD_INSTANCE cell_104_peri METHOD edge_length
+METHOD_INSTANCE cell_104_area_pos METHOD edge_area
+METHOD_INSTANCE cell_104_area_neg METHOD edge_area
+PARAMETER cell_104_p0 = 3.600000000
+PARAMETER cell_104_r = 1.000000000
+QUANTITY cell_104_energy ENERGY FUNCTION
+	(cell_104_area_pos.value - cell_104_area_neg.value - 1)^2 +
+	(cell_104_peri.value - cell_104_p0)^2/cell_104_r
+
+
+METHOD_INSTANCE cell_105_peri METHOD edge_length
+METHOD_INSTANCE cell_105_area_pos METHOD edge_area
+METHOD_INSTANCE cell_105_area_neg METHOD edge_area
+PARAMETER cell_105_p0 = 3.600000000
+PARAMETER cell_105_r = 1.000000000
+QUANTITY cell_105_energy ENERGY FUNCTION
+	(cell_105_area_pos.value - cell_105_area_neg.value - 1)^2 +
+	(cell_105_peri.value - cell_105_p0)^2/cell_105_r
+
+
+METHOD_INSTANCE cell_106_peri METHOD edge_length
+METHOD_INSTANCE cell_106_area_pos METHOD edge_area
+METHOD_INSTANCE cell_106_area_neg METHOD edge_area
+PARAMETER cell_106_p0 = 3.600000000
+PARAMETER cell_106_r = 1.000000000
+QUANTITY cell_106_energy ENERGY FUNCTION
+	(cell_106_area_pos.value - cell_106_area_neg.value - 1)^2 +
+	(cell_106_peri.value - cell_106_p0)^2/cell_106_r
+
+
+METHOD_INSTANCE cell_107_peri METHOD edge_length
+METHOD_INSTANCE cell_107_area_pos METHOD edge_area
+METHOD_INSTANCE cell_107_area_neg METHOD edge_area
+PARAMETER cell_107_p0 = 3.600000000
+PARAMETER cell_107_r = 1.000000000
+QUANTITY cell_107_energy ENERGY FUNCTION
+	(cell_107_area_pos.value - cell_107_area_neg.value - 1)^2 +
+	(cell_107_peri.value - cell_107_p0)^2/cell_107_r
+
+
+METHOD_INSTANCE cell_108_peri METHOD edge_length
+METHOD_INSTANCE cell_108_area_pos METHOD edge_area
+METHOD_INSTANCE cell_108_area_neg METHOD edge_area
+PARAMETER cell_108_p0 = 3.600000000
+PARAMETER cell_108_r = 1.000000000
+QUANTITY cell_108_energy ENERGY FUNCTION
+	(cell_108_area_pos.value - cell_108_area_neg.value - 1)^2 +
+	(cell_108_peri.value - cell_108_p0)^2/cell_108_r
+
+
+METHOD_INSTANCE cell_109_peri METHOD edge_length
+METHOD_INSTANCE cell_109_area_pos METHOD edge_area
+METHOD_INSTANCE cell_109_area_neg METHOD edge_area
+PARAMETER cell_109_p0 = 3.600000000
+PARAMETER cell_109_r = 1.000000000
+QUANTITY cell_109_energy ENERGY FUNCTION
+	(cell_109_area_pos.value - cell_109_area_neg.value - 1)^2 +
+	(cell_109_peri.value - cell_109_p0)^2/cell_109_r
+
+
+METHOD_INSTANCE cell_110_peri METHOD edge_length
+METHOD_INSTANCE cell_110_area_pos METHOD edge_area
+METHOD_INSTANCE cell_110_area_neg METHOD edge_area
+PARAMETER cell_110_p0 = 3.600000000
+PARAMETER cell_110_r = 1.000000000
+QUANTITY cell_110_energy ENERGY FUNCTION
+	(cell_110_area_pos.value - cell_110_area_neg.value - 1)^2 +
+	(cell_110_peri.value - cell_110_p0)^2/cell_110_r
+
+
+METHOD_INSTANCE cell_111_peri METHOD edge_length
+METHOD_INSTANCE cell_111_area_pos METHOD edge_area
+METHOD_INSTANCE cell_111_area_neg METHOD edge_area
+PARAMETER cell_111_p0 = 3.600000000
+PARAMETER cell_111_r = 1.000000000
+QUANTITY cell_111_energy ENERGY FUNCTION
+	(cell_111_area_pos.value - cell_111_area_neg.value - 1)^2 +
+	(cell_111_peri.value - cell_111_p0)^2/cell_111_r
+
+
+METHOD_INSTANCE cell_112_peri METHOD edge_length
+METHOD_INSTANCE cell_112_area_pos METHOD edge_area
+METHOD_INSTANCE cell_112_area_neg METHOD edge_area
+PARAMETER cell_112_p0 = 3.600000000
+PARAMETER cell_112_r = 1.000000000
+QUANTITY cell_112_energy ENERGY FUNCTION
+	(cell_112_area_pos.value - cell_112_area_neg.value - 1)^2 +
+	(cell_112_peri.value - cell_112_p0)^2/cell_112_r
+
+
+METHOD_INSTANCE cell_113_peri METHOD edge_length
+METHOD_INSTANCE cell_113_area_pos METHOD edge_area
+METHOD_INSTANCE cell_113_area_neg METHOD edge_area
+PARAMETER cell_113_p0 = 3.600000000
+PARAMETER cell_113_r = 1.000000000
+QUANTITY cell_113_energy ENERGY FUNCTION
+	(cell_113_area_pos.value - cell_113_area_neg.value - 1)^2 +
+	(cell_113_peri.value - cell_113_p0)^2/cell_113_r
+
+
+METHOD_INSTANCE cell_114_peri METHOD edge_length
+METHOD_INSTANCE cell_114_area_pos METHOD edge_area
+METHOD_INSTANCE cell_114_area_neg METHOD edge_area
+PARAMETER cell_114_p0 = 3.600000000
+PARAMETER cell_114_r = 1.000000000
+QUANTITY cell_114_energy ENERGY FUNCTION
+	(cell_114_area_pos.value - cell_114_area_neg.value - 1)^2 +
+	(cell_114_peri.value - cell_114_p0)^2/cell_114_r
+
+
+METHOD_INSTANCE cell_115_peri METHOD edge_length
+METHOD_INSTANCE cell_115_area_pos METHOD edge_area
+METHOD_INSTANCE cell_115_area_neg METHOD edge_area
+PARAMETER cell_115_p0 = 3.600000000
+PARAMETER cell_115_r = 1.000000000
+QUANTITY cell_115_energy ENERGY FUNCTION
+	(cell_115_area_pos.value - cell_115_area_neg.value - 1)^2 +
+	(cell_115_peri.value - cell_115_p0)^2/cell_115_r
+
+
+METHOD_INSTANCE cell_116_peri METHOD edge_length
+METHOD_INSTANCE cell_116_area_pos METHOD edge_area
+METHOD_INSTANCE cell_116_area_neg METHOD edge_area
+PARAMETER cell_116_p0 = 3.600000000
+PARAMETER cell_116_r = 1.000000000
+QUANTITY cell_116_energy ENERGY FUNCTION
+	(cell_116_area_pos.value - cell_116_area_neg.value - 1)^2 +
+	(cell_116_peri.value - cell_116_p0)^2/cell_116_r
+
+
+METHOD_INSTANCE cell_117_peri METHOD edge_length
+METHOD_INSTANCE cell_117_area_pos METHOD edge_area
+METHOD_INSTANCE cell_117_area_neg METHOD edge_area
+PARAMETER cell_117_p0 = 3.600000000
+PARAMETER cell_117_r = 1.000000000
+QUANTITY cell_117_energy ENERGY FUNCTION
+	(cell_117_area_pos.value - cell_117_area_neg.value - 1)^2 +
+	(cell_117_peri.value - cell_117_p0)^2/cell_117_r
+
+
+METHOD_INSTANCE cell_118_peri METHOD edge_length
+METHOD_INSTANCE cell_118_area_pos METHOD edge_area
+METHOD_INSTANCE cell_118_area_neg METHOD edge_area
+PARAMETER cell_118_p0 = 3.600000000
+PARAMETER cell_118_r = 1.000000000
+QUANTITY cell_118_energy ENERGY FUNCTION
+	(cell_118_area_pos.value - cell_118_area_neg.value - 1)^2 +
+	(cell_118_peri.value - cell_118_p0)^2/cell_118_r
+
+
+METHOD_INSTANCE cell_119_peri METHOD edge_length
+METHOD_INSTANCE cell_119_area_pos METHOD edge_area
+METHOD_INSTANCE cell_119_area_neg METHOD edge_area
+PARAMETER cell_119_p0 = 3.600000000
+PARAMETER cell_119_r = 1.000000000
+QUANTITY cell_119_energy ENERGY FUNCTION
+	(cell_119_area_pos.value - cell_119_area_neg.value - 1)^2 +
+	(cell_119_peri.value - cell_119_p0)^2/cell_119_r
+
+
+METHOD_INSTANCE cell_120_peri METHOD edge_length
+METHOD_INSTANCE cell_120_area_pos METHOD edge_area
+METHOD_INSTANCE cell_120_area_neg METHOD edge_area
+PARAMETER cell_120_p0 = 3.600000000
+PARAMETER cell_120_r = 1.000000000
+QUANTITY cell_120_energy ENERGY FUNCTION
+	(cell_120_area_pos.value - cell_120_area_neg.value - 1)^2 +
+	(cell_120_peri.value - cell_120_p0)^2/cell_120_r
+
+
+METHOD_INSTANCE cell_121_peri METHOD edge_length
+METHOD_INSTANCE cell_121_area_pos METHOD edge_area
+METHOD_INSTANCE cell_121_area_neg METHOD edge_area
+PARAMETER cell_121_p0 = 3.600000000
+PARAMETER cell_121_r = 1.000000000
+QUANTITY cell_121_energy ENERGY FUNCTION
+	(cell_121_area_pos.value - cell_121_area_neg.value - 1)^2 +
+	(cell_121_peri.value - cell_121_p0)^2/cell_121_r
+
+
+METHOD_INSTANCE cell_122_peri METHOD edge_length
+METHOD_INSTANCE cell_122_area_pos METHOD edge_area
+METHOD_INSTANCE cell_122_area_neg METHOD edge_area
+PARAMETER cell_122_p0 = 3.600000000
+PARAMETER cell_122_r = 1.000000000
+QUANTITY cell_122_energy ENERGY FUNCTION
+	(cell_122_area_pos.value - cell_122_area_neg.value - 1)^2 +
+	(cell_122_peri.value - cell_122_p0)^2/cell_122_r
+
+
+METHOD_INSTANCE cell_123_peri METHOD edge_length
+METHOD_INSTANCE cell_123_area_pos METHOD edge_area
+METHOD_INSTANCE cell_123_area_neg METHOD edge_area
+PARAMETER cell_123_p0 = 3.600000000
+PARAMETER cell_123_r = 1.000000000
+QUANTITY cell_123_energy ENERGY FUNCTION
+	(cell_123_area_pos.value - cell_123_area_neg.value - 1)^2 +
+	(cell_123_peri.value - cell_123_p0)^2/cell_123_r
+
+
+METHOD_INSTANCE cell_124_peri METHOD edge_length
+METHOD_INSTANCE cell_124_area_pos METHOD edge_area
+METHOD_INSTANCE cell_124_area_neg METHOD edge_area
+PARAMETER cell_124_p0 = 3.600000000
+PARAMETER cell_124_r = 1.000000000
+QUANTITY cell_124_energy ENERGY FUNCTION
+	(cell_124_area_pos.value - cell_124_area_neg.value - 1)^2 +
+	(cell_124_peri.value - cell_124_p0)^2/cell_124_r
+
+
+METHOD_INSTANCE cell_125_peri METHOD edge_length
+METHOD_INSTANCE cell_125_area_pos METHOD edge_area
+METHOD_INSTANCE cell_125_area_neg METHOD edge_area
+PARAMETER cell_125_p0 = 3.600000000
+PARAMETER cell_125_r = 1.000000000
+QUANTITY cell_125_energy ENERGY FUNCTION
+	(cell_125_area_pos.value - cell_125_area_neg.value - 1)^2 +
+	(cell_125_peri.value - cell_125_p0)^2/cell_125_r
+
+
+METHOD_INSTANCE cell_126_peri METHOD edge_length
+METHOD_INSTANCE cell_126_area_pos METHOD edge_area
+METHOD_INSTANCE cell_126_area_neg METHOD edge_area
+PARAMETER cell_126_p0 = 3.600000000
+PARAMETER cell_126_r = 1.000000000
+QUANTITY cell_126_energy ENERGY FUNCTION
+	(cell_126_area_pos.value - cell_126_area_neg.value - 1)^2 +
+	(cell_126_peri.value - cell_126_p0)^2/cell_126_r
+
+
+METHOD_INSTANCE cell_127_peri METHOD edge_length
+METHOD_INSTANCE cell_127_area_pos METHOD edge_area
+METHOD_INSTANCE cell_127_area_neg METHOD edge_area
+PARAMETER cell_127_p0 = 3.600000000
+PARAMETER cell_127_r = 1.000000000
+QUANTITY cell_127_energy ENERGY FUNCTION
+	(cell_127_area_pos.value - cell_127_area_neg.value - 1)^2 +
+	(cell_127_peri.value - cell_127_p0)^2/cell_127_r
+
+
+METHOD_INSTANCE cell_128_peri METHOD edge_length
+METHOD_INSTANCE cell_128_area_pos METHOD edge_area
+METHOD_INSTANCE cell_128_area_neg METHOD edge_area
+PARAMETER cell_128_p0 = 3.600000000
+PARAMETER cell_128_r = 1.000000000
+QUANTITY cell_128_energy ENERGY FUNCTION
+	(cell_128_area_pos.value - cell_128_area_neg.value - 1)^2 +
+	(cell_128_peri.value - cell_128_p0)^2/cell_128_r
+
+
+METHOD_INSTANCE cell_129_peri METHOD edge_length
+METHOD_INSTANCE cell_129_area_pos METHOD edge_area
+METHOD_INSTANCE cell_129_area_neg METHOD edge_area
+PARAMETER cell_129_p0 = 3.600000000
+PARAMETER cell_129_r = 1.000000000
+QUANTITY cell_129_energy ENERGY FUNCTION
+	(cell_129_area_pos.value - cell_129_area_neg.value - 1)^2 +
+	(cell_129_peri.value - cell_129_p0)^2/cell_129_r
+
+
+METHOD_INSTANCE cell_130_peri METHOD edge_length
+METHOD_INSTANCE cell_130_area_pos METHOD edge_area
+METHOD_INSTANCE cell_130_area_neg METHOD edge_area
+PARAMETER cell_130_p0 = 3.600000000
+PARAMETER cell_130_r = 1.000000000
+QUANTITY cell_130_energy ENERGY FUNCTION
+	(cell_130_area_pos.value - cell_130_area_neg.value - 1)^2 +
+	(cell_130_peri.value - cell_130_p0)^2/cell_130_r
+
+
+METHOD_INSTANCE cell_131_peri METHOD edge_length
+METHOD_INSTANCE cell_131_area_pos METHOD edge_area
+METHOD_INSTANCE cell_131_area_neg METHOD edge_area
+PARAMETER cell_131_p0 = 3.600000000
+PARAMETER cell_131_r = 1.000000000
+QUANTITY cell_131_energy ENERGY FUNCTION
+	(cell_131_area_pos.value - cell_131_area_neg.value - 1)^2 +
+	(cell_131_peri.value - cell_131_p0)^2/cell_131_r
+
+
+METHOD_INSTANCE cell_132_peri METHOD edge_length
+METHOD_INSTANCE cell_132_area_pos METHOD edge_area
+METHOD_INSTANCE cell_132_area_neg METHOD edge_area
+PARAMETER cell_132_p0 = 3.600000000
+PARAMETER cell_132_r = 1.000000000
+QUANTITY cell_132_energy ENERGY FUNCTION
+	(cell_132_area_pos.value - cell_132_area_neg.value - 1)^2 +
+	(cell_132_peri.value - cell_132_p0)^2/cell_132_r
+
+
+vertices
+1	8.1223594037	5.8756480704
+2	9.6181476173	5.3553519341
+3	9.0575530738	5.0562861679
+4	0.0000000000	0.0000000000	constraint 1	constraint 2
+5	13.2762299045	5.9600026910
+6	13.8468012026	6.2918089743
+7	6.3955107716	7.8255623829
+8	13.6174317161	7.1405288021
+9	11.0585312797	0.7191475949
+10	6.7548821311	0.9600679537
+11	9.6751508787	1.0776725601
+12	9.7883644533	1.2196511591
+13	9.1127603090	2.2863459421
+14	7.0497032873	6.4932301332
+15	7.2085603421	5.8134462739
+16	13.2930903597	1.0917740618
+17	12.9375188039	-0.0000000000	constraint 2
+18	13.7512363012	4.9678243648
+19	13.9683175941	4.1666213978
+20	12.9870172131	3.6404389536
+21	15.0422443705	6.6360752052
+22	15.4322044244	3.1320156365
+23	12.8845571931	6.9596746907
+24	13.0588953516	7.1638501000
+25	10.2360749983	4.8754634943
+26	11.1720293467	0.8329390072
+27	10.8798165017	1.9772665478
+28	8.0473539515	0.0000000000	constraint 2
+29	8.0797088247	0.4391223432
+30	9.1779252390	0.9931309551
+31	9.1253284231	0.9277046322
+32	9.4262407091	2.1955648538
+33	9.8148423033	1.7856638850
+34	10.6944565445	2.1106026317
+35	7.2025352077	3.9322751432
+36	6.7316460506	5.0102626374
+37	7.3308020795	5.6771009634
+38	7.0785429737	3.8057061798
+39	7.7640720354	4.2080774077
+40	6.2162664686	5.7848681707
+41	7.7672331814	7.6595817538
+42	7.7823481937	7.6436392065
+43	7.9756043242	6.9314217771
+44	7.1447279100	6.8467471890
+45	7.0182813215	7.1300062965
+46	13.7160542569	1.1369517638
+47	14.0334168083	1.4669362194
+48	14.0897853775	0.0000000000	constraint 2
+49	14.6516561712	-0.0000000000	constraint 2
+50	14.9527713276	6.7722542169
+51	14.0155806462	7.3613599726
+52	15.1138362535	8.0000000000
+53	16.0000000000	8.0000000000	constraint 3
+54	16.0000000000	6.9081667837	constraint 3
+55	12.7600870630	4.5913623006
+56	12.3419880099	5.8280401138
+57	13.1255854505	5.5968556207
+58	13.3871360464	5.0713246463
+59	14.4440568435	6.0254452660
+60	13.8961013517	5.0496464708
+61	10.2010154918	7.1416729756
+62	9.8460174481	6.8744203963
+63	9.5386520976	6.0098104867
+64	9.8671720145	6.4634297394
+65	8.4445394970	6.2821763803
+66	8.3617394200	6.7779001082
+67	8.9362237552	7.5521841948
+68	9.0417645481	7.6465050329
+69	14.0210570067	2.3703663785
+70	14.1734523123	3.9793685490
+71	14.9103396465	3.8145366768
+72	14.9637059832	3.5856424470
+73	14.1602852004	8.0000000000
+74	12.7486663078	8.0000000000
+75	12.0982097868	6.3637646219
+76	11.0519731639	6.1267893655
+77	11.0443697920	6.1354513991
+78	11.0526488044	7.2778681416
+79	11.9393016873	2.5712363590
+80	13.6783728218	2.8711379984
+81	12.9479361237	2.0389655164
+82	13.9199900073	2.4197504248
+83	12.8086035611	1.4377964151
+84	12.8679051328	1.9687405165
+85	12.0557205681	0.9696955846
+86	11.9228600726	1.0149118950
+87	11.9575840528	2.3167323107
+88	11.7982881705	2.1020844567
+89	10.9139044440	0.0000000000	constraint 2
+90	12.5903555526	-0.0000000000	constraint 2
+91	9.7462270799	-0.0000000000	constraint 2
+92	8.8512382139	0.0000000000	constraint 2
+93	5.8374734685	2.9873909880
+94	5.3536529032	2.1661410467
+95	6.0133319626	1.8773565698
+96	7.8063714311	2.7336001596
+97	7.8798113200	4.4075311527
+98	8.0029964606	5.8013726121
+99	7.5595198393	5.5995104350
+100	8.7406056082	4.6464394897
+101	8.7208252710	4.6109650632
+102	9.2514917724	3.8978070708
+103	9.7291306464	3.5753764969
+104	9.5381985821	3.8575412388
+105	8.9185356443	2.6589730676
+106	8.5107377815	3.0811735152
+107	8.5268707870	3.3013816354
+108	5.3493113757	4.9897089412
+109	5.3132219282	3.9009279061
+110	6.1044233118	4.9275766480
+111	5.8917226626	5.0504866924
+112	6.4251848383	3.8950153043
+113	5.8225255024	3.6289539817
+114	4.7731324533	5.4133352200
+115	6.2055049198	6.5037529198
+116	5.9896421473	6.1392420351
+117	5.9729892944	7.1998077254
+118	4.7604516034	3.6802380685
+119	4.2371218852	3.5874831891
+120	4.2557022801	2.9306901461
+121	4.3722337788	2.6944534033
+122	5.2952665527	2.6410441594
+123	5.3638112275	2.7175599162
+124	2.9503876756	1.9782383091
+125	3.2215294691	2.5139457640
+126	15.1606151560	4.1684402195
+127	14.7886974339	4.9148919891
+128	16.0000000000	4.4878769036	constraint 3
+129	16.0000000000	5.2999165765	constraint 3
+130	12.3623427353	6.7223972823
+131	12.1452479052	6.4790704088
+132	11.1703546613	7.4177920321
+133	11.6571508924	8.0000000000
+134	11.3772878304	8.0000000000
+135	10.2631219938	8.0000000000
+136	9.0691883338	8.0000000000
+137	11.6750276631	3.8255636519
+138	11.9905061358	4.6581463927
+139	11.8203772457	4.9531985366
+140	11.0041488815	5.2734415972
+141	10.3881239358	4.8662652649
+142	11.7443909302	3.7586436124
+143	12.0837871326	2.8661568486
+144	12.6633718165	3.0069050644
+145	12.9862339670	3.6381326686
+146	13.0385573670	3.3234237831
+147	9.9053993590	3.4327324331
+148	9.9754424730	3.0321520809
+149	10.9692116967	3.7467108861
+150	11.0571500816	3.6947679971
+151	10.7427810626	2.6456008633
+152	10.9698436398	2.9096625886
+153	7.1471315666	3.1544370661
+154	7.3889651439	2.9207333521
+155	6.3341305253	2.5376877540
+156	6.3492526726	2.0193168820
+157	7.8859462497	2.1026899035
+158	8.3750807776	1.7157898170
+159	8.3567843308	1.5043464689
+160	7.9887380495	0.9938019491
+161	6.9465233720	1.3540945379
+162	6.8870297365	1.6357509766
+163	6.9362088887	1.6778648400
+164	1.6427767750	6.6663745415
+165	1.9993557238	7.0315352810
+166	1.7871386637	6.1181816782
+167	2.9395515038	6.7891065458
+168	2.8910934739	5.7046214749
+169	3.0680034158	6.0683831714
+170	4.1319635832	3.6805194464
+171	4.4351785038	5.1267874041
+172	2.3934407918	2.1284956686
+173	2.1338593874	2.9115495378
+174	7.3578412087	0.0000000000	constraint 2
+175	1.9942031538	8.0000000000
+176	1.0584640796	1.8672162091
+177	0.0000000000	1.0419481149	constraint 1
+178	-0.0000000000	2.0997264411	constraint 1
+179	1.5773112595	6.6734145333
+180	0.9224309672	7.2026551810
+181	0.0000000000	5.9677287621	constraint 1
+182	0.0000000000	6.6977998263	constraint 1
+183	-0.0000000000	8.0000000000	constraint 1
+184	0.7804697685	8.0000000000
+185	14.9842044457	2.3183409641
+186	14.3478225868	1.9018662369
+187	14.3332377768	1.9836955173
+188	15.9837644247	5.3069861162
+189	15.0778807199	5.3214600138
+190	15.0237879912	6.5800296607
+191	14.6303156720	6.0969160540
+192	7.6926243189	8.0000000000
+193	1.3032048800	3.0852168347
+194	0.8865997324	2.7484106241
+195	1.3077506688	3.9271329266
+196	0.0000000000	3.0467288536	constraint 1
+197	0.0000000000	5.8469083790	constraint 1
+198	1.8843237348	5.0286128796
+199	1.4887998661	5.6953306130
+200	1.6138588917	5.7339970546
+201	3.1576043375	7.0010312469
+202	2.9392249517	8.0000000000
+203	4.4236165445	6.0885257759
+204	4.0785853417	6.1768407746
+205	4.7234418975	6.0448446382
+206	4.8283862663	6.2251354095
+207	4.8816355706	6.7545672721
+208	3.4947571419	7.0660101628
+209	3.0977695640	3.2366638147
+210	3.4711882139	3.8198351267
+211	2.2467229679	3.0697992267
+212	5.5246445503	1.1079274204
+213	4.9866224320	1.8685635435
+214	4.3253112519	1.8856256826
+215	2.9293157569	0.9155261163
+216	3.0292811017	1.8803812292
+217	4.1716522809	1.6896470459
+218	4.2816555664	1.0720431448
+219	15.0532026455	1.2468960539
+220	16.0000000000	0.0000000000	constraint 2	constraint 3
+221	14.7544398955	0.0000000000	constraint 2
+222	0.8345558761	4.3406663621
+223	0.8592101359	4.6607328105
+224	0.7824469728	4.8221663781
+225	0.0000000000	3.8339415692	constraint 1
+226	0.0000000000	5.7554688507	constraint 1
+227	3.7689040210	7.2536283187
+228	4.7509237660	7.0126081789
+229	3.7599230431	8.0000000000
+230	3.2893416691	4.0106294862
+231	2.1714150202	4.8866946785
+232	2.0385865557	4.0977024802
+233	2.2883041886	3.8828026709
+234	3.1089563187	5.0285069403
+235	2.9506288122	5.1826128177
+236	2.9671219502	5.1692036687
+237	2.9417909495	0.8713292569
+238	3.8044944293	0.6159245534
+239	6.2537208232	0.6783152767
+240	5.5117848062	1.0003965997
+241	5.0489208984	0.6626629015
+242	0.6396317623	1.0359073909
+243	0.6718373949	0.9928754096
+244	1.0621336976	1.8583562302
+245	1.9107965842	1.8115999787
+246	1.9879153832	1.1442575525
+247	1.8381093722	0.8601529900
+248	16.0000000000	2.9991056783	constraint 3
+249	6.3856866469	8.0000000000
+250	4.8114086628	8.0000000000
+251	5.0538555149	0.0000000000	constraint 2
+252	6.2220467055	0.0000000000	constraint 2
+253	16.0000000000	1.3682957247	constraint 3
+254	16.0000000000	2.1110399048	constraint 3
+255	3.8211870142	0.0000000000	constraint 2
+256	0.9780281810	-0.0000000000	constraint 2
+257	2.4757014916	0.0000000000	constraint 2
+258	2.0933366463	0.0000000000	constraint 2
+259	0.0000000000	16.0000000000	constraint 1	constraint 4
+260	16.0000000000	16.0000000000	constraint 3	constraint 4
+261	-1.0000000000	-1.0000000000	fixed
+262	17.0000000000	-1.0000000000	fixed
+
+edges
+1	242	243	tension	0	cell_5_peri	cell_5_area_neg	cell_22_peri	cell_22_area_pos
+2	177	242	tension	0	cell_5_peri	cell_5_area_neg	cell_21_peri	cell_21_area_pos
+3	4	177	tension	0	cell_1_peri	cell_1_area_pos	cell_5_peri	cell_5_area_neg
+4	4	256	tension	0	cell_2_peri	cell_2_area_neg	cell_5_peri	cell_5_area_pos
+5	243	256	tension	0	cell_5_peri	cell_5_area_neg	cell_6_peri	cell_6_area_pos
+6	256	258	tension	0	cell_2_peri	cell_2_area_neg	cell_6_peri	cell_6_area_pos
+7	247	258	tension	0	cell_6_peri	cell_6_area_neg	cell_7_peri	cell_7_area_pos
+8	243	247	tension	0	cell_6_peri	cell_6_area_neg	cell_22_peri	cell_22_area_pos
+9	257	258	tension	0	cell_2_peri	cell_2_area_pos	cell_7_peri	cell_7_area_neg
+10	237	257	tension	0	cell_7_peri	cell_7_area_neg	cell_8_peri	cell_8_area_pos
+11	215	237	tension	0	cell_7_peri	cell_7_area_neg	cell_24_peri	cell_24_area_pos
+12	215	246	tension	0	cell_7_peri	cell_7_area_pos	cell_23_peri	cell_23_area_neg
+13	246	247	tension	0	cell_7_peri	cell_7_area_pos	cell_22_peri	cell_22_area_neg
+14	255	257	tension	0	cell_2_peri	cell_2_area_pos	cell_8_peri	cell_8_area_neg
+15	238	255	tension	0	cell_8_peri	cell_8_area_neg	cell_9_peri	cell_9_area_pos
+16	237	238	tension	0	cell_8_peri	cell_8_area_neg	cell_24_peri	cell_24_area_pos
+17	241	251	tension	0	cell_9_peri	cell_9_area_neg	cell_10_peri	cell_10_area_pos
+18	218	241	tension	0	cell_9_peri	cell_9_area_neg	cell_26_peri	cell_26_area_pos
+19	218	238	tension	0	cell_9_peri	cell_9_area_pos	cell_24_peri	cell_24_area_neg
+20	251	255	tension	0	cell_2_peri	cell_2_area_pos	cell_9_peri	cell_9_area_neg
+21	240	241	tension	0	cell_10_peri	cell_10_area_pos	cell_26_peri	cell_26_area_neg
+22	251	252	tension	0	cell_2_peri	cell_2_area_neg	cell_10_peri	cell_10_area_pos
+23	239	252	tension	0	cell_10_peri	cell_10_area_neg	cell_11_peri	cell_11_area_pos
+24	239	240	tension	0	cell_10_peri	cell_10_area_pos	cell_27_peri	cell_27_area_neg
+25	174	252	tension	0	cell_2_peri	cell_2_area_pos	cell_11_peri	cell_11_area_neg
+26	10	174	tension	0	cell_11_peri	cell_11_area_neg	cell_12_peri	cell_12_area_pos
+27	10	239	tension	0	cell_11_peri	cell_11_area_pos	cell_27_peri	cell_27_area_neg
+28	160	161	tension	0	cell_12_peri	cell_12_area_pos	cell_28_peri	cell_28_area_neg
+29	10	161	tension	0	cell_12_peri	cell_12_area_neg	cell_27_peri	cell_27_area_pos
+30	28	174	tension	0	cell_2_peri	cell_2_area_pos	cell_12_peri	cell_12_area_neg
+31	28	29	tension	0	cell_12_peri	cell_12_area_pos	cell_13_peri	cell_13_area_neg
+32	29	160	tension	0	cell_12_peri	cell_12_area_pos	cell_29_peri	cell_29_area_neg
+33	29	31	tension	0	cell_13_peri	cell_13_area_neg	cell_29_peri	cell_29_area_pos
+34	28	92	tension	0	cell_2_peri	cell_2_area_neg	cell_13_peri	cell_13_area_pos
+35	31	92	tension	0	cell_13_peri	cell_13_area_neg	cell_14_peri	cell_14_area_pos
+36	11	30	tension	0	cell_14_peri	cell_14_area_pos	cell_30_peri	cell_30_area_neg
+37	30	31	tension	0	cell_14_peri	cell_14_area_pos	cell_29_peri	cell_29_area_neg
+38	91	92	tension	0	cell_2_peri	cell_2_area_pos	cell_14_peri	cell_14_area_neg
+39	11	91	tension	0	cell_14_peri	cell_14_area_neg	cell_15_peri	cell_15_area_pos
+40	89	91	tension	0	cell_2_peri	cell_2_area_pos	cell_15_peri	cell_15_area_neg
+41	9	89	tension	0	cell_15_peri	cell_15_area_neg	cell_16_peri	cell_16_area_pos
+42	9	12	tension	0	cell_15_peri	cell_15_area_pos	cell_31_peri	cell_31_area_neg
+43	11	12	tension	0	cell_15_peri	cell_15_area_neg	cell_30_peri	cell_30_area_pos
+44	89	90	tension	0	cell_2_peri	cell_2_area_neg	cell_16_peri	cell_16_area_pos
+45	85	90	tension	0	cell_16_peri	cell_16_area_neg	cell_17_peri	cell_17_area_pos
+46	85	86	tension	0	cell_16_peri	cell_16_area_pos	cell_33_peri	cell_33_area_neg
+47	26	86	tension	0	cell_16_peri	cell_16_area_neg	cell_32_peri	cell_32_area_pos
+48	9	26	tension	0	cell_16_peri	cell_16_area_neg	cell_31_peri	cell_31_area_pos
+49	83	85	tension	0	cell_17_peri	cell_17_area_pos	cell_33_peri	cell_33_area_neg
+50	17	90	tension	0	cell_2_peri	cell_2_area_pos	cell_17_peri	cell_17_area_neg
+51	16	17	tension	0	cell_17_peri	cell_17_area_neg	cell_18_peri	cell_18_area_pos
+52	16	83	tension	0	cell_17_peri	cell_17_area_pos	cell_34_peri	cell_34_area_neg
+53	16	46	tension	0	cell_18_peri	cell_18_area_neg	cell_34_peri	cell_34_area_pos
+54	17	48	tension	0	cell_2_peri	cell_2_area_neg	cell_18_peri	cell_18_area_pos
+55	46	48	tension	0	cell_18_peri	cell_18_area_neg	cell_19_peri	cell_19_area_pos
+56	48	49	tension	0	cell_2_peri	cell_2_area_neg	cell_19_peri	cell_19_area_pos
+57	47	49	tension	0	cell_19_peri	cell_19_area_neg	cell_35_peri	cell_35_area_pos
+58	46	47	tension	0	cell_19_peri	cell_19_area_neg	cell_34_peri	cell_34_area_pos
+59	220	221	tension	0	cell_2_peri	cell_2_area_pos	cell_20_peri	cell_20_area_neg
+60	220	253	tension	0	cell_3_peri	cell_3_area_neg	cell_20_peri	cell_20_area_pos
+61	219	253	tension	0	cell_20_peri	cell_20_area_neg	cell_36_peri	cell_36_area_pos
+62	219	221	tension	0	cell_20_peri	cell_20_area_pos	cell_35_peri	cell_35_area_neg
+63	242	244	tension	0	cell_21_peri	cell_21_area_pos	cell_22_peri	cell_22_area_neg
+64	176	244	tension	0	cell_21_peri	cell_21_area_neg	cell_38_peri	cell_38_area_pos
+65	176	178	tension	0	cell_21_peri	cell_21_area_pos	cell_37_peri	cell_37_area_neg
+66	177	178	tension	0	cell_1_peri	cell_1_area_pos	cell_21_peri	cell_21_area_neg
+67	245	246	tension	0	cell_22_peri	cell_22_area_neg	cell_23_peri	cell_23_area_pos
+68	244	245	tension	0	cell_22_peri	cell_22_area_neg	cell_38_peri	cell_38_area_pos
+69	215	216	tension	0	cell_23_peri	cell_23_area_pos	cell_24_peri	cell_24_area_neg
+70	124	216	tension	0	cell_23_peri	cell_23_area_neg	cell_40_peri	cell_40_area_pos
+71	124	172	tension	0	cell_23_peri	cell_23_area_pos	cell_39_peri	cell_39_area_neg
+72	172	245	tension	0	cell_23_peri	cell_23_area_pos	cell_38_peri	cell_38_area_neg
+73	217	218	tension	0	cell_24_peri	cell_24_area_neg	cell_26_peri	cell_26_area_pos
+74	216	217	tension	0	cell_24_peri	cell_24_area_neg	cell_40_peri	cell_40_area_pos
+75	212	213	tension	0	cell_25_peri	cell_25_area_neg	cell_26_peri	cell_26_area_pos
+76	95	212	tension	0	cell_25_peri	cell_25_area_neg	cell_27_peri	cell_27_area_pos
+77	94	95	tension	0	cell_25_peri	cell_25_area_neg	cell_42_peri	cell_42_area_pos
+78	94	213	tension	0	cell_25_peri	cell_25_area_pos	cell_41_peri	cell_41_area_neg
+79	212	240	tension	0	cell_26_peri	cell_26_area_neg	cell_27_peri	cell_27_area_pos
+80	213	214	tension	0	cell_26_peri	cell_26_area_pos	cell_41_peri	cell_41_area_neg
+81	214	217	tension	0	cell_26_peri	cell_26_area_pos	cell_40_peri	cell_40_area_neg
+82	161	162	tension	0	cell_27_peri	cell_27_area_pos	cell_28_peri	cell_28_area_neg
+83	156	162	tension	0	cell_27_peri	cell_27_area_neg	cell_43_peri	cell_43_area_pos
+84	95	156	tension	0	cell_27_peri	cell_27_area_neg	cell_42_peri	cell_42_area_pos
+85	162	163	tension	0	cell_28_peri	cell_28_area_neg	cell_43_peri	cell_43_area_pos
+86	159	160	tension	0	cell_28_peri	cell_28_area_neg	cell_29_peri	cell_29_area_pos
+87	158	159	tension	0	cell_28_peri	cell_28_area_neg	cell_30_peri	cell_30_area_pos
+88	157	158	tension	0	cell_28_peri	cell_28_area_neg	cell_45_peri	cell_45_area_pos
+89	157	163	tension	0	cell_28_peri	cell_28_area_pos	cell_44_peri	cell_44_area_neg
+90	30	159	tension	0	cell_29_peri	cell_29_area_pos	cell_30_peri	cell_30_area_neg
+91	12	33	tension	0	cell_30_peri	cell_30_area_pos	cell_31_peri	cell_31_area_neg
+92	32	33	tension	0	cell_30_peri	cell_30_area_neg	cell_47_peri	cell_47_area_pos
+93	13	32	tension	0	cell_30_peri	cell_30_area_neg	cell_46_peri	cell_46_area_pos
+94	13	158	tension	0	cell_30_peri	cell_30_area_pos	cell_45_peri	cell_45_area_neg
+95	33	34	tension	0	cell_31_peri	cell_31_area_neg	cell_47_peri	cell_47_area_pos
+96	26	27	tension	0	cell_31_peri	cell_31_area_pos	cell_32_peri	cell_32_area_neg
+97	27	34	tension	0	cell_31_peri	cell_31_area_pos	cell_48_peri	cell_48_area_neg
+98	86	88	tension	0	cell_32_peri	cell_32_area_pos	cell_33_peri	cell_33_area_neg
+99	27	88	tension	0	cell_32_peri	cell_32_area_neg	cell_48_peri	cell_48_area_pos
+100	87	88	tension	0	cell_33_peri	cell_33_area_pos	cell_48_peri	cell_48_area_neg
+101	83	84	tension	0	cell_33_peri	cell_33_area_pos	cell_34_peri	cell_34_area_neg
+102	84	87	tension	0	cell_33_peri	cell_33_area_pos	cell_49_peri	cell_49_area_neg
+103	186	187	tension	0	cell_34_peri	cell_34_area_pos	cell_36_peri	cell_36_area_neg
+104	69	187	tension	0	cell_34_peri	cell_34_area_neg	cell_51_peri	cell_51_area_pos
+105	69	82	tension	0	cell_34_peri	cell_34_area_pos	cell_67_peri	cell_67_area_neg
+106	81	82	tension	0	cell_34_peri	cell_34_area_neg	cell_50_peri	cell_50_area_pos
+107	81	84	tension	0	cell_34_peri	cell_34_area_pos	cell_49_peri	cell_49_area_neg
+108	47	186	tension	0	cell_34_peri	cell_34_area_pos	cell_35_peri	cell_35_area_neg
+109	186	219	tension	0	cell_35_peri	cell_35_area_neg	cell_36_peri	cell_36_area_pos
+110	49	221	tension	0	cell_2_peri	cell_2_area_neg	cell_35_peri	cell_35_area_pos
+111	185	254	tension	0	cell_36_peri	cell_36_area_neg	cell_52_peri	cell_52_area_pos
+112	185	187	tension	0	cell_36_peri	cell_36_area_pos	cell_51_peri	cell_51_area_neg
+113	253	254	tension	0	cell_3_peri	cell_3_area_neg	cell_36_peri	cell_36_area_pos
+114	194	196	tension	0	cell_37_peri	cell_37_area_pos	cell_53_peri	cell_53_area_neg
+115	178	196	tension	0	cell_1_peri	cell_1_area_pos	cell_37_peri	cell_37_area_neg
+116	176	194	tension	0	cell_37_peri	cell_37_area_pos	cell_38_peri	cell_38_area_neg
+117	172	173	tension	0	cell_38_peri	cell_38_area_pos	cell_39_peri	cell_39_area_neg
+118	173	193	tension	0	cell_38_peri	cell_38_area_pos	cell_54_peri	cell_54_area_neg
+119	193	194	tension	0	cell_38_peri	cell_38_area_pos	cell_53_peri	cell_53_area_neg
+120	209	211	tension	0	cell_39_peri	cell_39_area_pos	cell_55_peri	cell_55_area_neg
+121	173	211	tension	0	cell_39_peri	cell_39_area_neg	cell_54_peri	cell_54_area_pos
+122	124	125	tension	0	cell_39_peri	cell_39_area_pos	cell_40_peri	cell_40_area_neg
+123	125	209	tension	0	cell_39_peri	cell_39_area_pos	cell_56_peri	cell_56_area_neg
+124	121	214	tension	0	cell_40_peri	cell_40_area_neg	cell_41_peri	cell_41_area_pos
+125	120	121	tension	0	cell_40_peri	cell_40_area_neg	cell_57_peri	cell_57_area_pos
+126	120	125	tension	0	cell_40_peri	cell_40_area_pos	cell_56_peri	cell_56_area_neg
+127	94	122	tension	0	cell_41_peri	cell_41_area_pos	cell_42_peri	cell_42_area_neg
+128	121	122	tension	0	cell_41_peri	cell_41_area_neg	cell_57_peri	cell_57_area_pos
+129	155	156	tension	0	cell_42_peri	cell_42_area_neg	cell_43_peri	cell_43_area_pos
+130	93	155	tension	0	cell_42_peri	cell_42_area_neg	cell_59_peri	cell_59_area_pos
+131	93	123	tension	0	cell_42_peri	cell_42_area_pos	cell_58_peri	cell_58_area_neg
+132	122	123	tension	0	cell_42_peri	cell_42_area_neg	cell_57_peri	cell_57_area_pos
+133	154	163	tension	0	cell_43_peri	cell_43_area_neg	cell_44_peri	cell_44_area_pos
+134	153	154	tension	0	cell_43_peri	cell_43_area_neg	cell_60_peri	cell_60_area_pos
+135	153	155	tension	0	cell_43_peri	cell_43_area_pos	cell_59_peri	cell_59_area_neg
+136	96	157	tension	0	cell_44_peri	cell_44_area_neg	cell_45_peri	cell_45_area_pos
+137	96	154	tension	0	cell_44_peri	cell_44_area_pos	cell_60_peri	cell_60_area_neg
+138	13	105	tension	0	cell_45_peri	cell_45_area_pos	cell_46_peri	cell_46_area_neg
+139	105	106	tension	0	cell_45_peri	cell_45_area_pos	cell_62_peri	cell_62_area_neg
+140	96	106	tension	0	cell_45_peri	cell_45_area_neg	cell_60_peri	cell_60_area_pos
+141	147	148	tension	0	cell_46_peri	cell_46_area_neg	cell_63_peri	cell_63_area_pos
+142	103	147	tension	0	cell_46_peri	cell_46_area_neg	cell_79_peri	cell_79_area_pos
+143	103	105	tension	0	cell_46_peri	cell_46_area_pos	cell_62_peri	cell_62_area_neg
+144	32	148	tension	0	cell_46_peri	cell_46_area_pos	cell_47_peri	cell_47_area_neg
+145	148	151	tension	0	cell_47_peri	cell_47_area_neg	cell_63_peri	cell_63_area_pos
+146	34	151	tension	0	cell_47_peri	cell_47_area_pos	cell_48_peri	cell_48_area_neg
+147	151	152	tension	0	cell_48_peri	cell_48_area_neg	cell_63_peri	cell_63_area_pos
+148	79	87	tension	0	cell_48_peri	cell_48_area_neg	cell_49_peri	cell_49_area_pos
+149	79	152	tension	0	cell_48_peri	cell_48_area_pos	cell_64_peri	cell_64_area_neg
+150	143	144	tension	0	cell_49_peri	cell_49_area_neg	cell_65_peri	cell_65_area_pos
+151	79	143	tension	0	cell_49_peri	cell_49_area_neg	cell_64_peri	cell_64_area_pos
+152	81	144	tension	0	cell_49_peri	cell_49_area_pos	cell_50_peri	cell_50_area_neg
+153	144	146	tension	0	cell_50_peri	cell_50_area_neg	cell_65_peri	cell_65_area_pos
+154	80	82	tension	0	cell_50_peri	cell_50_area_neg	cell_67_peri	cell_67_area_pos
+155	80	146	tension	0	cell_50_peri	cell_50_area_pos	cell_66_peri	cell_66_area_neg
+156	22	185	tension	0	cell_51_peri	cell_51_area_neg	cell_52_peri	cell_52_area_pos
+157	22	72	tension	0	cell_51_peri	cell_51_area_pos	cell_68_peri	cell_68_area_neg
+158	69	72	tension	0	cell_51_peri	cell_51_area_neg	cell_67_peri	cell_67_area_pos
+159	248	254	tension	0	cell_3_peri	cell_3_area_pos	cell_52_peri	cell_52_area_neg
+160	22	248	tension	0	cell_52_peri	cell_52_area_neg	cell_68_peri	cell_68_area_pos
+161	195	222	tension	0	cell_53_peri	cell_53_area_pos	cell_70_peri	cell_70_area_neg
+162	222	225	tension	0	cell_53_peri	cell_53_area_pos	cell_69_peri	cell_69_area_neg
+163	196	225	tension	0	cell_1_peri	cell_1_area_pos	cell_53_peri	cell_53_area_neg
+164	193	195	tension	0	cell_53_peri	cell_53_area_pos	cell_54_peri	cell_54_area_neg
+165	232	233	tension	0	cell_54_peri	cell_54_area_neg	cell_71_peri	cell_71_area_pos
+166	195	232	tension	0	cell_54_peri	cell_54_area_neg	cell_70_peri	cell_70_area_pos
+167	211	233	tension	0	cell_54_peri	cell_54_area_pos	cell_55_peri	cell_55_area_neg
+168	230	233	tension	0	cell_55_peri	cell_55_area_pos	cell_71_peri	cell_71_area_neg
+169	209	210	tension	0	cell_55_peri	cell_55_area_pos	cell_56_peri	cell_56_area_neg
+170	210	230	tension	0	cell_55_peri	cell_55_area_pos	cell_72_peri	cell_72_area_neg
+171	119	120	tension	0	cell_56_peri	cell_56_area_neg	cell_57_peri	cell_57_area_pos
+172	119	170	tension	0	cell_56_peri	cell_56_area_pos	cell_73_peri	cell_73_area_neg
+173	170	210	tension	0	cell_56_peri	cell_56_area_pos	cell_72_peri	cell_72_area_neg
+174	118	123	tension	0	cell_57_peri	cell_57_area_neg	cell_58_peri	cell_58_area_pos
+175	118	119	tension	0	cell_57_peri	cell_57_area_pos	cell_73_peri	cell_73_area_neg
+176	93	113	tension	0	cell_58_peri	cell_58_area_pos	cell_59_peri	cell_59_area_neg
+177	109	113	tension	0	cell_58_peri	cell_58_area_neg	cell_74_peri	cell_74_area_pos
+178	109	118	tension	0	cell_58_peri	cell_58_area_pos	cell_73_peri	cell_73_area_neg
+179	38	153	tension	0	cell_59_peri	cell_59_area_neg	cell_60_peri	cell_60_area_pos
+180	38	112	tension	0	cell_59_peri	cell_59_area_pos	cell_75_peri	cell_75_area_neg
+181	112	113	tension	0	cell_59_peri	cell_59_area_pos	cell_74_peri	cell_74_area_neg
+182	106	107	tension	0	cell_60_peri	cell_60_area_pos	cell_62_peri	cell_62_area_neg
+183	39	107	tension	0	cell_60_peri	cell_60_area_neg	cell_61_peri	cell_61_area_pos
+184	35	39	tension	0	cell_60_peri	cell_60_area_neg	cell_76_peri	cell_76_area_pos
+185	35	38	tension	0	cell_60_peri	cell_60_area_pos	cell_75_peri	cell_75_area_neg
+186	102	107	tension	0	cell_61_peri	cell_61_area_neg	cell_62_peri	cell_62_area_pos
+187	101	102	tension	0	cell_61_peri	cell_61_area_neg	cell_78_peri	cell_78_area_pos
+188	97	101	tension	0	cell_61_peri	cell_61_area_neg	cell_77_peri	cell_77_area_pos
+189	39	97	tension	0	cell_61_peri	cell_61_area_neg	cell_76_peri	cell_76_area_pos
+190	103	104	tension	0	cell_62_peri	cell_62_area_pos	cell_79_peri	cell_79_area_neg
+191	102	104	tension	0	cell_62_peri	cell_62_area_neg	cell_78_peri	cell_78_area_pos
+192	150	152	tension	0	cell_63_peri	cell_63_area_neg	cell_64_peri	cell_64_area_pos
+193	149	150	tension	0	cell_63_peri	cell_63_area_neg	cell_80_peri	cell_80_area_pos
+194	147	149	tension	0	cell_63_peri	cell_63_area_neg	cell_79_peri	cell_79_area_pos
+195	142	143	tension	0	cell_64_peri	cell_64_area_neg	cell_65_peri	cell_65_area_pos
+196	137	142	tension	0	cell_64_peri	cell_64_area_neg	cell_81_peri	cell_81_area_pos
+197	137	150	tension	0	cell_64_peri	cell_64_area_pos	cell_80_peri	cell_80_area_neg
+198	145	146	tension	0	cell_65_peri	cell_65_area_neg	cell_66_peri	cell_66_area_pos
+199	142	145	tension	0	cell_65_peri	cell_65_area_neg	cell_81_peri	cell_81_area_pos
+200	70	80	tension	0	cell_66_peri	cell_66_area_neg	cell_67_peri	cell_67_area_pos
+201	19	70	tension	0	cell_66_peri	cell_66_area_neg	cell_83_peri	cell_83_area_pos
+202	19	20	tension	0	cell_66_peri	cell_66_area_pos	cell_82_peri	cell_82_area_neg
+203	20	145	tension	0	cell_66_peri	cell_66_area_pos	cell_81_peri	cell_81_area_neg
+204	71	72	tension	0	cell_67_peri	cell_67_area_neg	cell_68_peri	cell_68_area_pos
+205	70	71	tension	0	cell_67_peri	cell_67_area_neg	cell_83_peri	cell_83_area_pos
+206	126	128	tension	0	cell_68_peri	cell_68_area_neg	cell_84_peri	cell_84_area_pos
+207	71	126	tension	0	cell_68_peri	cell_68_area_neg	cell_83_peri	cell_83_area_pos
+208	128	248	tension	0	cell_3_peri	cell_3_area_pos	cell_68_peri	cell_68_area_neg
+209	224	226	tension	0	cell_69_peri	cell_69_area_pos	cell_85_peri	cell_85_area_neg
+210	225	226	tension	0	cell_1_peri	cell_1_area_pos	cell_69_peri	cell_69_area_neg
+211	222	223	tension	0	cell_69_peri	cell_69_area_pos	cell_70_peri	cell_70_area_neg
+212	223	224	tension	0	cell_69_peri	cell_69_area_pos	cell_86_peri	cell_86_area_neg
+213	231	232	tension	0	cell_70_peri	cell_70_area_neg	cell_71_peri	cell_71_area_pos
+214	198	231	tension	0	cell_70_peri	cell_70_area_neg	cell_87_peri	cell_87_area_pos
+215	198	223	tension	0	cell_70_peri	cell_70_area_pos	cell_86_peri	cell_86_area_neg
+216	235	236	tension	0	cell_71_peri	cell_71_area_neg	cell_88_peri	cell_88_area_pos
+217	231	235	tension	0	cell_71_peri	cell_71_area_neg	cell_87_peri	cell_87_area_pos
+218	230	234	tension	0	cell_71_peri	cell_71_area_pos	cell_72_peri	cell_72_area_neg
+219	234	236	tension	0	cell_71_peri	cell_71_area_pos	cell_89_peri	cell_89_area_neg
+220	170	171	tension	0	cell_72_peri	cell_72_area_pos	cell_73_peri	cell_73_area_neg
+221	171	234	tension	0	cell_72_peri	cell_72_area_pos	cell_89_peri	cell_89_area_neg
+222	108	109	tension	0	cell_73_peri	cell_73_area_neg	cell_74_peri	cell_74_area_pos
+223	108	114	tension	0	cell_73_peri	cell_73_area_pos	cell_90_peri	cell_90_area_neg
+224	114	171	tension	0	cell_73_peri	cell_73_area_pos	cell_89_peri	cell_89_area_neg
+225	110	112	tension	0	cell_74_peri	cell_74_area_neg	cell_75_peri	cell_75_area_pos
+226	110	111	tension	0	cell_74_peri	cell_74_area_pos	cell_92_peri	cell_92_area_neg
+227	108	111	tension	0	cell_74_peri	cell_74_area_neg	cell_90_peri	cell_90_area_pos
+228	35	36	tension	0	cell_75_peri	cell_75_area_pos	cell_76_peri	cell_76_area_neg
+229	36	110	tension	0	cell_75_peri	cell_75_area_pos	cell_92_peri	cell_92_area_neg
+230	97	99	tension	0	cell_76_peri	cell_76_area_pos	cell_77_peri	cell_77_area_neg
+231	37	99	tension	0	cell_76_peri	cell_76_area_neg	cell_108_peri	cell_108_area_pos
+232	36	37	tension	0	cell_76_peri	cell_76_area_neg	cell_92_peri	cell_92_area_pos
+233	100	101	tension	0	cell_77_peri	cell_77_area_neg	cell_78_peri	cell_78_area_pos
+234	98	100	tension	0	cell_77_peri	cell_77_area_neg	cell_93_peri	cell_93_area_pos
+235	98	99	tension	0	cell_77_peri	cell_77_area_pos	cell_108_peri	cell_108_area_neg
+236	25	104	tension	0	cell_78_peri	cell_78_area_neg	cell_79_peri	cell_79_area_pos
+237	2	25	tension	0	cell_78_peri	cell_78_area_neg	cell_95_peri	cell_95_area_pos
+238	2	3	tension	0	cell_78_peri	cell_78_area_pos	cell_94_peri	cell_94_area_neg
+239	3	100	tension	0	cell_78_peri	cell_78_area_pos	cell_93_peri	cell_93_area_neg
+240	141	149	tension	0	cell_79_peri	cell_79_area_neg	cell_80_peri	cell_80_area_pos
+241	25	141	tension	0	cell_79_peri	cell_79_area_neg	cell_95_peri	cell_95_area_pos
+242	137	138	tension	0	cell_80_peri	cell_80_area_pos	cell_81_peri	cell_81_area_neg
+243	138	139	tension	0	cell_80_peri	cell_80_area_pos	cell_97_peri	cell_97_area_neg
+244	139	140	tension	0	cell_80_peri	cell_80_area_pos	cell_96_peri	cell_96_area_neg
+245	140	141	tension	0	cell_80_peri	cell_80_area_pos	cell_95_peri	cell_95_area_neg
+246	20	55	tension	0	cell_81_peri	cell_81_area_pos	cell_82_peri	cell_82_area_neg
+247	55	138	tension	0	cell_81_peri	cell_81_area_pos	cell_97_peri	cell_97_area_neg
+248	55	58	tension	0	cell_82_peri	cell_82_area_neg	cell_97_peri	cell_97_area_pos
+249	18	19	tension	0	cell_82_peri	cell_82_area_neg	cell_83_peri	cell_83_area_pos
+250	18	58	tension	0	cell_82_peri	cell_82_area_pos	cell_98_peri	cell_98_area_neg
+251	126	127	tension	0	cell_83_peri	cell_83_area_pos	cell_84_peri	cell_84_area_neg
+252	60	127	tension	0	cell_83_peri	cell_83_area_neg	cell_99_peri	cell_99_area_pos
+253	18	60	tension	0	cell_83_peri	cell_83_area_neg	cell_98_peri	cell_98_area_pos
+254	188	189	tension	0	cell_84_peri	cell_84_area_pos	cell_100_peri	cell_100_area_neg
+255	127	189	tension	0	cell_84_peri	cell_84_area_neg	cell_99_peri	cell_99_area_pos
+256	128	129	tension	0	cell_3_peri	cell_3_area_neg	cell_84_peri	cell_84_area_pos
+257	129	188	tension	0	cell_84_peri	cell_84_area_pos	cell_116_peri	cell_116_area_neg
+258	199	224	tension	0	cell_85_peri	cell_85_area_neg	cell_86_peri	cell_86_area_pos
+259	197	199	tension	0	cell_85_peri	cell_85_area_neg	cell_102_peri	cell_102_area_pos
+260	197	226	tension	0	cell_1_peri	cell_1_area_neg	cell_85_peri	cell_85_area_pos
+261	198	200	tension	0	cell_86_peri	cell_86_area_pos	cell_87_peri	cell_87_area_neg
+262	199	200	tension	0	cell_86_peri	cell_86_area_neg	cell_102_peri	cell_102_area_pos
+263	168	235	tension	0	cell_87_peri	cell_87_area_neg	cell_88_peri	cell_88_area_pos
+264	166	168	tension	0	cell_87_peri	cell_87_area_neg	cell_103_peri	cell_103_area_pos
+265	166	200	tension	0	cell_87_peri	cell_87_area_pos	cell_102_peri	cell_102_area_neg
+266	203	236	tension	0	cell_88_peri	cell_88_area_neg	cell_89_peri	cell_89_area_pos
+267	203	204	tension	0	cell_88_peri	cell_88_area_pos	cell_105_peri	cell_105_area_neg
+268	169	204	tension	0	cell_88_peri	cell_88_area_neg	cell_104_peri	cell_104_area_pos
+269	168	169	tension	0	cell_88_peri	cell_88_area_neg	cell_103_peri	cell_103_area_pos
+270	114	205	tension	0	cell_89_peri	cell_89_area_pos	cell_90_peri	cell_90_area_neg
+271	203	205	tension	0	cell_89_peri	cell_89_area_neg	cell_105_peri	cell_105_area_pos
+272	205	206	tension	0	cell_90_peri	cell_90_area_neg	cell_105_peri	cell_105_area_pos
+273	40	111	tension	0	cell_90_peri	cell_90_area_neg	cell_92_peri	cell_92_area_pos
+274	40	116	tension	0	cell_90_peri	cell_90_area_pos	cell_91_peri	cell_91_area_neg
+275	116	206	tension	0	cell_90_peri	cell_90_area_pos	cell_106_peri	cell_106_area_neg
+276	115	116	tension	0	cell_91_peri	cell_91_area_pos	cell_106_peri	cell_106_area_neg
+277	15	40	tension	0	cell_91_peri	cell_91_area_neg	cell_92_peri	cell_92_area_pos
+278	14	15	tension	0	cell_91_peri	cell_91_area_neg	cell_108_peri	cell_108_area_pos
+279	14	115	tension	0	cell_91_peri	cell_91_area_pos	cell_107_peri	cell_107_area_neg
+280	15	37	tension	0	cell_92_peri	cell_92_area_neg	cell_108_peri	cell_108_area_pos
+281	1	3	tension	0	cell_93_peri	cell_93_area_neg	cell_94_peri	cell_94_area_pos
+282	1	98	tension	0	cell_93_peri	cell_93_area_pos	cell_108_peri	cell_108_area_neg
+283	63	65	tension	0	cell_94_peri	cell_94_area_pos	cell_110_peri	cell_110_area_neg
+284	1	65	tension	0	cell_94_peri	cell_94_area_neg	cell_108_peri	cell_108_area_pos
+285	2	63	tension	0	cell_94_peri	cell_94_area_pos	cell_95_peri	cell_95_area_neg
+286	76	140	tension	0	cell_95_peri	cell_95_area_neg	cell_96_peri	cell_96_area_pos
+287	76	77	tension	0	cell_95_peri	cell_95_area_pos	cell_112_peri	cell_112_area_neg
+288	64	77	tension	0	cell_95_peri	cell_95_area_neg	cell_111_peri	cell_111_area_pos
+289	63	64	tension	0	cell_95_peri	cell_95_area_neg	cell_110_peri	cell_110_area_pos
+290	56	139	tension	0	cell_96_peri	cell_96_area_neg	cell_97_peri	cell_97_area_pos
+291	56	75	tension	0	cell_96_peri	cell_96_area_pos	cell_113_peri	cell_113_area_neg
+292	75	76	tension	0	cell_96_peri	cell_96_area_pos	cell_112_peri	cell_112_area_neg
+293	57	58	tension	0	cell_97_peri	cell_97_area_neg	cell_98_peri	cell_98_area_pos
+294	56	57	tension	0	cell_97_peri	cell_97_area_neg	cell_113_peri	cell_113_area_pos
+295	59	60	tension	0	cell_98_peri	cell_98_area_neg	cell_99_peri	cell_99_area_pos
+296	6	59	tension	0	cell_98_peri	cell_98_area_neg	cell_115_peri	cell_115_area_pos
+297	5	6	tension	0	cell_98_peri	cell_98_area_neg	cell_114_peri	cell_114_area_pos
+298	5	57	tension	0	cell_98_peri	cell_98_area_pos	cell_113_peri	cell_113_area_neg
+299	189	191	tension	0	cell_99_peri	cell_99_area_pos	cell_100_peri	cell_100_area_neg
+300	59	191	tension	0	cell_99_peri	cell_99_area_neg	cell_115_peri	cell_115_area_pos
+301	190	191	tension	0	cell_100_peri	cell_100_area_pos	cell_115_peri	cell_115_area_neg
+302	188	190	tension	0	cell_100_peri	cell_100_area_pos	cell_116_peri	cell_116_area_neg
+303	181	182	tension	0	cell_1_peri	cell_1_area_pos	cell_101_peri	cell_101_area_neg
+304	179	181	tension	0	cell_101_peri	cell_101_area_neg	cell_102_peri	cell_102_area_pos
+305	179	180	tension	0	cell_101_peri	cell_101_area_pos	cell_118_peri	cell_118_area_neg
+306	180	182	tension	0	cell_101_peri	cell_101_area_pos	cell_117_peri	cell_117_area_neg
+307	164	166	tension	0	cell_102_peri	cell_102_area_neg	cell_103_peri	cell_103_area_pos
+308	164	179	tension	0	cell_102_peri	cell_102_area_pos	cell_118_peri	cell_118_area_neg
+309	181	197	tension	0	cell_1_peri	cell_1_area_neg	cell_102_peri	cell_102_area_pos
+310	167	169	tension	0	cell_103_peri	cell_103_area_neg	cell_104_peri	cell_104_area_pos
+311	165	167	tension	0	cell_103_peri	cell_103_area_neg	cell_119_peri	cell_119_area_pos
+312	164	165	tension	0	cell_103_peri	cell_103_area_neg	cell_118_peri	cell_118_area_pos
+313	204	208	tension	0	cell_104_peri	cell_104_area_pos	cell_105_peri	cell_105_area_neg
+314	201	208	tension	0	cell_104_peri	cell_104_area_neg	cell_120_peri	cell_120_area_pos
+315	167	201	tension	0	cell_104_peri	cell_104_area_neg	cell_119_peri	cell_119_area_pos
+316	227	228	tension	0	cell_105_peri	cell_105_area_neg	cell_121_peri	cell_121_area_pos
+317	208	227	tension	0	cell_105_peri	cell_105_area_neg	cell_120_peri	cell_120_area_pos
+318	206	207	tension	0	cell_105_peri	cell_105_area_pos	cell_106_peri	cell_106_area_neg
+319	207	228	tension	0	cell_105_peri	cell_105_area_pos	cell_122_peri	cell_122_area_neg
+320	115	117	tension	0	cell_106_peri	cell_106_area_pos	cell_107_peri	cell_107_area_neg
+321	117	207	tension	0	cell_106_peri	cell_106_area_pos	cell_122_peri	cell_122_area_neg
+322	14	44	tension	0	cell_107_peri	cell_107_area_pos	cell_108_peri	cell_108_area_neg
+323	44	45	tension	0	cell_107_peri	cell_107_area_pos	cell_124_peri	cell_124_area_neg
+324	7	45	tension	0	cell_107_peri	cell_107_area_neg	cell_123_peri	cell_123_area_pos
+325	7	117	tension	0	cell_107_peri	cell_107_area_pos	cell_122_peri	cell_122_area_neg
+326	65	66	tension	0	cell_108_peri	cell_108_area_pos	cell_110_peri	cell_110_area_neg
+327	43	66	tension	0	cell_108_peri	cell_108_area_neg	cell_109_peri	cell_109_area_pos
+328	43	44	tension	0	cell_108_peri	cell_108_area_pos	cell_124_peri	cell_124_area_neg
+329	66	67	tension	0	cell_109_peri	cell_109_area_pos	cell_110_peri	cell_110_area_neg
+330	42	67	tension	0	cell_109_peri	cell_109_area_neg	cell_125_peri	cell_125_area_pos
+331	42	43	tension	0	cell_109_peri	cell_109_area_pos	cell_124_peri	cell_124_area_neg
+332	67	68	tension	0	cell_110_peri	cell_110_area_neg	cell_125_peri	cell_125_area_pos
+333	62	64	tension	0	cell_110_peri	cell_110_area_neg	cell_111_peri	cell_111_area_pos
+334	62	68	tension	0	cell_110_peri	cell_110_area_pos	cell_126_peri	cell_126_area_neg
+335	77	78	tension	0	cell_111_peri	cell_111_area_pos	cell_112_peri	cell_112_area_neg
+336	61	78	tension	0	cell_111_peri	cell_111_area_neg	cell_127_peri	cell_127_area_pos
+337	61	62	tension	0	cell_111_peri	cell_111_area_pos	cell_126_peri	cell_126_area_neg
+338	131	132	tension	0	cell_112_peri	cell_112_area_pos	cell_128_peri	cell_128_area_neg
+339	78	132	tension	0	cell_112_peri	cell_112_area_neg	cell_127_peri	cell_127_area_pos
+340	75	131	tension	0	cell_112_peri	cell_112_area_pos	cell_113_peri	cell_113_area_neg
+341	130	131	tension	0	cell_113_peri	cell_113_area_pos	cell_128_peri	cell_128_area_neg
+342	5	23	tension	0	cell_113_peri	cell_113_area_pos	cell_114_peri	cell_114_area_neg
+343	23	130	tension	0	cell_113_peri	cell_113_area_pos	cell_129_peri	cell_129_area_neg
+344	23	24	tension	0	cell_114_peri	cell_114_area_neg	cell_129_peri	cell_129_area_pos
+345	6	8	tension	0	cell_114_peri	cell_114_area_pos	cell_115_peri	cell_115_area_neg
+346	8	24	tension	0	cell_114_peri	cell_114_area_pos	cell_130_peri	cell_130_area_neg
+347	21	190	tension	0	cell_115_peri	cell_115_area_neg	cell_116_peri	cell_116_area_pos
+348	21	50	tension	0	cell_115_peri	cell_115_area_pos	cell_132_peri	cell_132_area_neg
+349	50	51	tension	0	cell_115_peri	cell_115_area_pos	cell_131_peri	cell_131_area_neg
+350	8	51	tension	0	cell_115_peri	cell_115_area_neg	cell_130_peri	cell_130_area_pos
+351	54	129	tension	0	cell_3_peri	cell_3_area_pos	cell_116_peri	cell_116_area_neg
+352	21	54	tension	0	cell_116_peri	cell_116_area_neg	cell_132_peri	cell_132_area_pos
+353	182	183	tension	0	cell_1_peri	cell_1_area_pos	cell_117_peri	cell_117_area_neg
+354	180	184	tension	0	cell_117_peri	cell_117_area_pos	cell_118_peri	cell_118_area_neg
+355	183	184	tension	0	cell_4_peri	cell_4_area_pos	cell_117_peri	cell_117_area_neg
+356	165	175	tension	0	cell_118_peri	cell_118_area_pos	cell_119_peri	cell_119_area_neg
+357	175	184	tension	0	cell_4_peri	cell_4_area_neg	cell_118_peri	cell_118_area_pos
+358	201	202	tension	0	cell_119_peri	cell_119_area_pos	cell_120_peri	cell_120_area_neg
+359	175	202	tension	0	cell_4_peri	cell_4_area_pos	cell_119_peri	cell_119_area_neg
+360	227	229	tension	0	cell_120_peri	cell_120_area_pos	cell_121_peri	cell_121_area_neg
+361	202	229	tension	0	cell_4_peri	cell_4_area_pos	cell_120_peri	cell_120_area_neg
+362	228	250	tension	0	cell_121_peri	cell_121_area_pos	cell_122_peri	cell_122_area_neg
+363	229	250	tension	0	cell_4_peri	cell_4_area_pos	cell_121_peri	cell_121_area_neg
+364	7	249	tension	0	cell_122_peri	cell_122_area_pos	cell_123_peri	cell_123_area_neg
+365	249	250	tension	0	cell_4_peri	cell_4_area_neg	cell_122_peri	cell_122_area_pos
+366	192	249	tension	0	cell_4_peri	cell_4_area_neg	cell_123_peri	cell_123_area_pos
+367	41	45	tension	0	cell_123_peri	cell_123_area_neg	cell_124_peri	cell_124_area_pos
+368	41	192	tension	0	cell_123_peri	cell_123_area_pos	cell_125_peri	cell_125_area_neg
+369	41	42	tension	0	cell_124_peri	cell_124_area_neg	cell_125_peri	cell_125_area_pos
+370	68	136	tension	0	cell_125_peri	cell_125_area_pos	cell_126_peri	cell_126_area_neg
+371	136	192	tension	0	cell_4_peri	cell_4_area_neg	cell_125_peri	cell_125_area_pos
+372	135	136	tension	0	cell_4_peri	cell_4_area_neg	cell_126_peri	cell_126_area_pos
+373	61	135	tension	0	cell_126_peri	cell_126_area_pos	cell_127_peri	cell_127_area_neg
+374	132	134	tension	0	cell_127_peri	cell_127_area_pos	cell_128_peri	cell_128_area_neg
+375	134	135	tension	0	cell_4_peri	cell_4_area_neg	cell_127_peri	cell_127_area_pos
+376	133	134	tension	0	cell_4_peri	cell_4_area_neg	cell_128_peri	cell_128_area_pos
+377	130	133	tension	0	cell_128_peri	cell_128_area_pos	cell_129_peri	cell_129_area_neg
+378	24	74	tension	0	cell_129_peri	cell_129_area_pos	cell_130_peri	cell_130_area_neg
+379	74	133	tension	0	cell_4_peri	cell_4_area_neg	cell_129_peri	cell_129_area_pos
+380	51	73	tension	0	cell_130_peri	cell_130_area_pos	cell_131_peri	cell_131_area_neg
+381	73	74	tension	0	cell_4_peri	cell_4_area_neg	cell_130_peri	cell_130_area_pos
+382	50	52	tension	0	cell_131_peri	cell_131_area_pos	cell_132_peri	cell_132_area_neg
+383	52	73	tension	0	cell_4_peri	cell_4_area_neg	cell_131_peri	cell_131_area_pos
+384	53	54	tension	0	cell_3_peri	cell_3_area_pos	cell_132_peri	cell_132_area_neg
+385	52	53	tension	0	cell_4_peri	cell_4_area_pos	cell_132_peri	cell_132_area_neg
+386	183	259	tension	0	cell_1_peri	cell_1_area_pos	cell_4_peri	cell_4_area_neg
+387	259	260	tension	0	cell_4_peri	cell_4_area_neg
+388	53	260	tension	0	cell_3_peri	cell_3_area_neg	cell_4_peri	cell_4_area_pos
+389	259	261	tension	0	cell_1_peri	cell_1_area_pos
+390	4	261	tension	0	cell_1_peri	cell_1_area_neg	cell_2_peri	cell_2_area_pos
+391	261	262	tension	0	cell_2_peri	cell_2_area_pos
+392	220	262	tension	0	cell_2_peri	cell_2_area_neg	cell_3_peri	cell_3_area_pos
+393	260	262	tension	0	cell_3_peri	cell_3_area_neg
+
+faces
+1	3	66	115	163	210	-260	-309	303	353	386	389	-390
+2	59	-110	-56	-54	50	-44	40	38	-34	30	25	-22	20	14	9	-6	-4	390	391	-392
+3	-388	384	351	-256	208	159	-113	-60	392	-393
+4	355	-357	359	361	363	-365	-366	-371	-372	-375	-376	-379	-381	-383	385	388	-387	-386
+5	-1	-2	-3	4	-5
+6	6	-7	-8	5
+7	7	-9	-10	-11	12	13
+8	10	-14	-15	-16
+9	-17	-18	19	15	-20
+10	21	17	22	-23	24
+11	23	-25	-26	27
+12	28	-29	26	-30	31	32
+13	-33	-31	34	-35
+14	36	37	35	-38	-39
+15	-40	-41	42	-43	39
+16	41	44	-45	46	-47	-48
+17	49	45	-50	-51	52
+18	-53	51	54	-55
+19	56	-57	-58	55
+20	-59	60	-61	62
+21	63	-64	65	-66	2
+22	-13	-67	-68	-63	1	8
+23	67	-12	69	-70	71	72
+24	16	-19	-73	-74	-69	11
+25	-75	-76	-77	78
+26	-21	-79	75	80	81	73	18
+27	-24	-27	29	82	-83	-84	76	79
+28	-85	-82	-28	-86	-87	-88	89
+29	86	-32	33	-37	90
+30	87	-90	-36	43	91	-92	-93	94
+31	-95	-91	-42	48	96	97
+32	98	-99	-96	47
+33	100	-98	-46	-49	101	102
+34	103	-104	105	-106	107	-101	-52	53	58	108
+35	-62	-109	-108	57	110
+36	-111	112	-103	109	61	113
+37	114	-115	-65	116
+38	68	-72	117	118	119	-116	64
+39	120	-121	-117	-71	122	123
+40	74	-81	-124	-125	126	-122	70
+41	-80	-78	127	-128	124
+42	-129	-130	131	-132	-127	77	84
+43	85	-133	-134	135	129	83
+44	-89	-136	137	133
+45	88	-94	138	139	-140	136
+46	-141	-142	143	-138	93	144
+47	-145	-144	92	95	146
+48	-147	-146	-97	99	-100	-148	149
+49	-150	-151	148	-102	-107	152
+50	-153	-152	106	-154	155
+51	-112	-156	157	-158	104
+52	111	-159	-160	156
+53	161	162	-163	-114	-119	164
+54	-165	-166	-164	-118	121	167
+55	168	-167	-120	169	170
+56	-169	-123	-126	-171	172	173
+57	132	-174	175	171	125	128
+58	174	-131	176	-177	178
+59	-135	-179	180	181	-176	130
+60	134	-137	140	182	-183	-184	185	179
+61	-186	-187	-188	-189	183
+62	-182	-139	-143	190	-191	186
+63	147	-192	-193	-194	141	145
+64	192	-149	151	-195	-196	197
+65	-198	-199	195	150	153
+66	198	-155	-200	-201	202	203
+67	154	-105	158	-204	-205	200
+68	-206	-207	204	-157	160	-208
+69	209	-210	-162	211	212
+70	-213	-214	215	-211	-161	166
+71	-216	-217	213	165	-168	218	219
+72	-218	-170	-173	220	221
+73	-220	-172	-175	-178	-222	223	224
+74	-181	-225	226	-227	222	177
+75	225	-180	-185	228	229
+76	230	-231	-232	-228	184	189
+77	-233	-234	235	-230	188
+78	191	-236	-237	238	239	233	187
+79	194	-240	-241	236	-190	142
+80	193	-197	242	243	244	245	240
+81	199	-203	246	247	-242	196
+82	-248	-246	-202	-249	250
+83	251	-252	-253	249	201	205	207
+84	254	-255	-251	206	256	257
+85	-258	-259	260	-209
+86	-212	-215	261	-262	258
+87	217	-263	-264	265	-261	214
+88	216	-266	267	-268	-269	263
+89	-219	-221	-224	270	-271	266
+90	-272	-270	-223	227	-273	274	275
+91	276	-274	-277	-278	279
+92	-226	-229	232	-280	277	273
+93	234	-239	-281	282
+94	283	-284	281	-238	285
+95	-245	-286	287	-288	-289	-285	237	241
+96	-244	-290	291	292	286
+97	-243	-247	248	-293	-294	290
+98	-295	-296	-297	298	293	-250	253
+99	299	-300	295	252	255
+100	301	-299	-254	302
+101	-303	-304	305	306
+102	262	-265	-307	308	304	309	259
+103	269	-310	-311	-312	307	264
+104	313	-314	-315	310	268
+105	-316	-317	-313	-267	271	272	318	319
+106	-318	-275	-276	320	321
+107	-320	-279	322	323	-324	325
+108	-235	-282	284	326	-327	328	-322	278	280	231
+109	329	-330	331	327
+110	-332	-329	-326	-283	289	-333	334
+111	335	-336	337	333	288
+112	338	-339	-335	-287	-292	340
+113	341	-340	-291	294	-298	342	343
+114	-344	-342	297	345	346
+115	-301	-347	348	349	-350	-345	296	300
+116	-302	-257	-351	-352	347
+117	-353	-306	354	-355
+118	-305	-308	312	356	357	-354
+119	315	358	-359	-356	311
+120	317	360	-361	-358	314
+121	362	-363	-360	316
+122	-321	-325	364	365	-362	-319
+123	366	-364	324	-367	368
+124	-323	-328	-331	-369	367
+125	-368	369	330	332	370	371
+126	372	-370	-334	-337	373
+127	339	374	375	-373	336
+128	376	-374	-338	-341	377
+129	-377	-343	344	378	379
+130	350	380	381	-378	-346
+131	-380	-349	382	383
+132	-384	-385	-382	-348	352
+
+bodies
+1	1
+2	2
+3	3
+4	4
+5	5
+6	6
+7	7
+8	8
+9	9
+10	10
+11	11
+12	12
+13	13
+14	14
+15	15
+16	16
+17	17
+18	18
+19	19
+20	20
+21	21
+22	22
+23	23
+24	24
+25	25
+26	26
+27	27
+28	28
+29	29
+30	30
+31	31
+32	32
+33	33
+34	34
+35	35
+36	36
+37	37
+38	38
+39	39
+40	40
+41	41
+42	42
+43	43
+44	44
+45	45
+46	46
+47	47
+48	48
+49	49
+50	50
+51	51
+52	52
+53	53
+54	54
+55	55
+56	56
+57	57
+58	58
+59	59
+60	60
+61	61
+62	62
+63	63
+64	64
+65	65
+66	66
+67	67
+68	68
+69	69
+70	70
+71	71
+72	72
+73	73
+74	74
+75	75
+76	76
+77	77
+78	78
+79	79
+80	80
+81	81
+82	82
+83	83
+84	84
+85	85
+86	86
+87	87
+88	88
+89	89
+90	90
+91	91
+92	92
+93	93
+94	94
+95	95
+96	96
+97	97
+98	98
+99	99
+100	100
+101	101
+102	102
+103	103
+104	104
+105	105
+106	106
+107	107
+108	108
+109	109
+110	110
+111	111
+112	112
+113	113
+114	114
+115	115
+116	116
+117	117
+118	118
+119	119
+120	120
+121	121
+122	122
+123	123
+124	124
+125	125
+126	126
+127	127
+128	128
+129	129
+130	130
+131	131
+132	132
+
+read
+
+conj_grad on
+autorecalc on
+
+random_seed := 222
+// Shape index parameters
+
+epi_p0_mean := 3.7;
+epi_r_mean := 1.0;
+epi_std := 0.06;
+
+mes_p0_mean := 3.6;
+mes_r_mean := 1.0;
+mes_std := 0.06;
+
+ing_p0_mean := 3.7;
+ing_r_mean := 1.0;
+ing_std := 0.06;
+
+// Segregation tension parameters
+
+start_ie_tension := 0.0;
+start_im_tension := 0.2;
+start_ai_tension := 0.3;
+end_ie_tension := 0.12;
+end_im_tension := 0.08;
+end_ai_tension := 0.6;
+
+apical_epi_tension := 0.3;
+apical_mes_tension := 1.0;
+apical_ing_tension := start_ai_tension;
+epi_epi_tension := 0.0;
+mes_mes_tension := 0.0;
+ing_ing_tension := 0.0;
+epi_mes_tension := 0.2;
+ing_epi_tension := start_ie_tension;
+ing_mes_tension := start_im_tension;
+
+nonlocal_counter := 1;
+
+PROCEDURE dump_system (integer save_number) {
+	// "./frame_%d.fe"
+	dump sprintf "./output/frame_%d.fe", save_number;
+	}
+
+PROCEDURE output_data (integer save_number) {
+	local output_file;
+	output_file := sprintf "./output/time_%d.txt", save_number;
+	printf "# vertices\n" >>> output_file;
+	foreach vertex current_vertex do
+		printf "%d\t%.9f\t%.9f\n", current_vertex.id,
+					current_vertex.x, current_vertex.y >> output_file;
+	printf "\n# edges\n" >> output_file;
+	foreach edge current_edge do
+		printf "%d\t%d\t%d\n", current_edge.id,
+					current_edge.vertex[1].id,
+					current_edge.vertex[2].id >> output_file;
+	printf "\n# faces\n" >> output_file;
+	foreach face current_face do {
+		printf "%d", current_face.id >> output_file;
+		foreach current_face.edge current_edge do
+			printf "\t%d", current_edge.oid >> output_file;
+		printf "\t%d\n", current_face.type >> output_file;
+		}
+	}
+
+/*
+// Function to generate gaussian random variable. Uses Box-Muller Transform.
+FUNCTION real gaussian_random (real mean, real std) {
+	local uni_1;
+	uni_1 := random;
+	local uni_2;
+	uni_2 := random;
+	local gauss_1;
+	gauss_1 := sqrt(-2*log(uni_1))*sin(2*pi*uni_2);
+	return (mean + std*gauss_1);
+	} //*/
+
+// Function to generate gaussian random variable using central limit theorem.
+FUNCTION real gaussian_random (real mean, real std) {
+	local num_samples;
+	num_samples := 4;
+	local running_sum;
+	running_sum := 0.0;
+	local counter;
+	for (counter := 0; counter<num_samples; counter++)
+		running_sum += (random - 0.5);
+	local gauss;
+	gauss := 2*running_sum*sqrt(3/num_samples);
+	return (mean + std*gauss);
+	}
+
+// Procedures for ingression vertex model.
+PROCEDURE setup_ingression_random () {
+	foreach facet current_face do {
+		if current_face.type == 2 and random > 0.8 then
+			current_face.type := 3;
+		};
+	}
+
+PROCEDURE setup_ingression_together (real radius) {
+	foreach facet current_face do {
+		local centroid;
+		define centroid real [2];
+		centroid[1] := 0;
+		centroid[2] := 0;
+		local vertex_counter;
+		vertex_counter := 0;
+		foreach current_face.vertex current_vertex do {
+			centroid[1] := centroid[1] + current_vertex.x;
+			centroid[2] := centroid[2] + current_vertex.y;
+			vertex_counter := vertex_counter + 1;
+			};
+		centroid[1] := centroid[1] / vertex_counter;
+		centroid[2] := centroid[2] / vertex_counter;
+		if current_face.type == 2 and centroid[2] < Ny/2+3 and
+				(centroid[1]-Ny/2)^2 +
+				(centroid[2]-Ny/2)^2 < radius^2 then
+			current_face.type := 3;
+		};
+	}
+
+PROCEDURE setup_types (real height) {
+	foreach facet current_face do {
+		if current_face.id <= 3 then {
+			set current_face.type -1; // Empty space
+			continue;
+			};
+		if current_face.id == 4 then {
+			set current_face.type 0; // Empty space
+			continue;
+			};
+		local centroid;
+		define centroid real [2];
+		centroid[1] := 0;
+		centroid[2] := 0;
+		local vertex_counter;
+		vertex_counter := 0;
+		foreach current_face.vertex current_vertex do {
+			centroid[1] := centroid[1] + current_vertex.x;
+			centroid[2] := centroid[2] + current_vertex.y;
+			vertex_counter := vertex_counter + 1;
+			};
+		centroid[1] := centroid[1] / vertex_counter;
+		centroid[2] := centroid[2] / vertex_counter;
+		if (centroid[2] > Ny - height) then {
+			set current_face.type 2;
+			exec sprintf "cell_%d_p0 := %1.3f", current_face.id, epi_p0_mean;
+			}
+		else {
+			set current_face.type 1;
+			exec sprintf "cell_%d_p0 := %1.3f", current_face.id, mes_p0_mean;
+			};
+		};
+	}
+
+PROCEDURE set_colors () {
+	foreach edge current_edge do
+		set current_edge.color black;
+	foreach facet current_face do
+		if current_face.type == -1 then
+			set current_face.edges.color lightblue;
+	foreach facet current_face do
+		if current_face.type == 0 then
+			set current_face.edges.color green;
+	foreach facet current_face do
+		if current_face.type == 1 then
+			set current_face.edges.color black;
+	foreach facet current_face do
+		if current_face.type == 2 then
+			set current_face.edges.color red;
+	foreach facet current_face do
+		if current_face.type == 3 then
+			set current_face.edges.color magenta;
+	return;
+	}
+
+PROCEDURE set_tension () {
+	foreach edge current_edge do
+		set current_edge.tension 0;
+	foreach edge current_edge do {
+		if current_edge.valence == 1 then
+			continue // Don't worry about edges on boundary.
+		else if (current_edge.facets[1].type == 2 and \
+					current_edge.facets[2].type == 2) or \
+				(current_edge.facets[1].type == 2 and \
+					current_edge.facets[2].type == 2) then
+			set current_edge.tension epi_epi_tension
+		else if (current_edge.facets[1].type == 1 and \
+					current_edge.facets[2].type == 1) or \
+				(current_edge.facets[1].type == 1 and \
+					current_edge.facets[2].type == 1) then
+			set current_edge.tension mes_mes_tension
+		else if (current_edge.facets[1].type == 3 and \
+					current_edge.facets[2].type == 3) or \
+				(current_edge.facets[1].type == 3 and \
+					current_edge.facets[2].type == 3) then
+			set current_edge.tension ing_ing_tension
+		else if (current_edge.facets[1].type == 0 and \
+					current_edge.facets[2].type == 1) or \
+				(current_edge.facets[1].type == 1 and \
+					current_edge.facets[2].type == 0) then
+			set current_edge.tension apical_mes_tension
+		else if (current_edge.facets[1].type == 0 and \
+					current_edge.facets[2].type == 2) or \
+				(current_edge.facets[1].type == 2 and \
+					current_edge.facets[2].type == 0) then
+			set current_edge.tension apical_epi_tension
+		else if (current_edge.facets[1].type == 0 and \
+					current_edge.facets[2].type == 3) or \
+				(current_edge.facets[1].type == 3 and \
+					current_edge.facets[2].type == 0) then
+			set current_edge.tension apical_ing_tension
+		else if (current_edge.facets[1].type == 1 and \
+					current_edge.facets[2].type == 2) or \
+				(current_edge.facets[1].type == 2 and \
+					current_edge.facets[2].type == 1) then
+			set current_edge.tension epi_mes_tension
+		else if (current_edge.facets[1].type == 1 and \
+					current_edge.facets[2].type == 3) or \
+				(current_edge.facets[1].type == 3 and \
+					current_edge.facets[2].type == 1) then
+			set current_edge.tension ing_mes_tension
+		else if (current_edge.facets[1].type == 2 and \
+					current_edge.facets[2].type == 3) or \
+				(current_edge.facets[1].type == 3 and \
+					current_edge.facets[2].type == 2) then
+			set current_edge.tension ing_epi_tension;
+		};
+	return;
+	}
+
+PROCEDURE print_area (integer face_number) {
+	exec sprintf "print cell_%d_area_pos.value - cell_%d_area_neg.value",
+										face_number, face_number;
+	}
+
+PROCEDURE unset_edge_methods (integer edge_number) {
+	foreach edge[edge_number].face current_face do {
+		exec sprintf "unset edge[%d] cell_%d_peri",
+							edge_number, current_face.id;
+		exec sprintf "unset edge[%d] cell_%d_area_pos",
+							edge_number, current_face.id;
+		exec sprintf "unset edge[%d] cell_%d_area_neg",
+							edge_number, current_face.id;
+		};
+	}
+
+PROCEDURE set_edge_methods (integer edge_number) {
+	foreach edge[edge_number].face current_face do {
+		exec sprintf "set edge[%d] cell_%d_peri",
+								edge_number, current_face.id;
+		local face_index;
+		if edge[edge_number].face[1].id == current_face.id then
+			face_index := 1 else face_index := 2;
+		if (edge[edge_number].face[face_index].oid > 0) then {
+			exec sprintf "set edge[%d] cell_%d_area_pos",
+								edge_number, current_face.id;
+			}
+		else {
+			exec sprintf "set edge[%d] cell_%d_area_neg",
+								edge_number, current_face.id;
+			}
+		};
+	}
+
+PROCEDURE t1_exchange (integer edge_number) {
+	// v_constraint_list is structured as
+	//  {#_constraints some_constraint some_other_constraint ...}
+	foreach edge[edge_number].vertex current_vertex do {
+		local const_index;
+		for (const_index := v_constraint_list[1]+1; const_index >= 2;
+					const_index--) {
+			local const_number;
+			const_number := current_vertex.v_constraint_list[const_index]
+																imod 0x100000;
+			unset current_vertex constraint const_number;
+			};
+		};
+	unset_edge_methods(edge_number);
+	t1_edgeswap edge[edge_number];
+	set_edge_methods(edge_number);
+	foreach edge[edge_number].vertex current_vertex do
+		foreach current_vertex.face current_face do
+			if current_face.type == -1 then
+				set current_vertex constraint current_face.id;
+	set_colors();
+	set_tension();
+	return;
+	}
+
+// Relax the system allowing passive T1 transitions when edges become short.
+PROCEDURE relax_system (integer maximum_steps) {
+	local step_counter;
+	for (step_counter:=1; step_counter<=maximum_steps; step_counter++) {
+		local initial_energy;
+		initial_energy := total_energy;
+		g1;
+		if min(edges, length) < length_threshold then {
+			local edge_counter;
+			for (edge_counter := 1; edge_counter <= edge_count;
+									edge_counter++) {
+				if edge[edge_counter].length < length_threshold /*and \
+						edge[edge_counter].length < edge_lengths[edge_counter]*/
+						then {
+					t1_exchange(edge_counter);
+					// Push the vertices appart slightly.
+					// This improves the behaviour somewhat in a liquid phase.
+					set edge[edge_counter].tension -0.1;
+					g1;
+					set edge[edge_counter].tension 0;
+					//
+					printf "relaxer fliped edge %d\n", edge_counter;
+					};
+				};
+			set scale 1; // Reset scale after topological change.
+			};
+		g1;
+		if step_counter > 10 and \
+				total_energy <= initial_energy and \
+				initial_energy - total_energy < energy_threshold then
+			return;
+		};
+	return;
+	}
+
+PROCEDURE run_system (integer maximum_steps) {
+	local step_counter;
+	for (step_counter:=1; step_counter<=maximum_steps; step_counter++) {
+		foreach face current_face do {
+			local new_p0;
+			new_p0 := 0.0;
+			local new_r;
+			new_r := 0.0;
+			local new_rand;
+			new_rand := 0.0;
+			if current_face.type == 1 then {
+				new_rand := gaussian_random(1.0, mes_std);
+			//	new_p0 := mes_p0_mean * new_rand;
+			//	new_r := mes_r_mean;
+				new_p0 := mes_p0_mean / new_rand;
+				new_r := mes_r_mean / new_rand;
+				}
+			else if current_face.type == 2 then {
+				new_rand := gaussian_random(1.0, epi_std);
+			//	new_p0 := epi_p0_mean * new_rand;
+			//	new_r := epi_r_mean;
+				new_p0 := epi_p0_mean / new_rand;
+				new_r := epi_r_mean / new_rand;
+				}
+			else if current_face.type == 3 then {
+				new_rand := gaussian_random(1.0, ing_std);
+			//	new_p0 := ing_p0_mean * new_rand;
+			//	new_r := ing_r_mean;
+				new_p0 := ing_p0_mean / new_rand;
+				new_r := ing_r_mean / new_rand;
+				};
+			exec sprintf "cell_%d_p0 := %1.4f",
+							current_face.id, new_p0;
+			exec sprintf "cell_%d_r := %1.4f",
+							current_face.id, new_r;
+			};
+		if force_coefficent > 0 then {
+			foreach vertex current_vertex do {
+				local is_ing;
+				is_ing := 0;
+				foreach current_vertex.facets current_face do{
+					if current_face.type == 3 then {
+						is_ing := 1;
+						};
+					};
+				if is_ing == 1 then {
+					set current_vertex downward_force;
+					} else {
+					unset current_vertex downward_force;
+					};
+				};
+			};
+		relax_system(10);
+		local divisor;
+		divisor := 10;
+		if (step_counter imod divisor == 0) then {
+			output_data(nonlocal_counter);
+			nonlocal_counter += 1;
+			};
+		};
+	return;
+	}
+
+change_steps := 20;
+change_increments := 40;
+number_steps := 1200;
+
+change := { local change_counter;
+			for ( change_counter := 1;
+				  change_counter <= change_increments;
+				  change_counter++ ) {
+				run_system(change_steps);
+				local fraction;
+				fraction := change_counter/change_increments;
+				ing_epi_tension := (1.0-fraction) * start_ie_tension +
+								   fraction * end_ie_tension;
+				ing_mes_tension := (1.0-fraction) * start_im_tension +
+								   fraction * end_im_tension;
+				apical_ing_tension := (1.0-fraction) * start_ai_tension +
+									  fraction * end_ai_tension;
+				};
+			}
+setup := { setup_types(3.2); set_colors(); set_tension(); }
+relax := { relax_system(100); output_data(0); } // dump_system(0); }
+reset := { setup_ingression_random(); set_colors(); set_tension(); }
+giver := { setup; relax; reset;
+		   output_data(0); change;
+		   run_system(number_steps); }
